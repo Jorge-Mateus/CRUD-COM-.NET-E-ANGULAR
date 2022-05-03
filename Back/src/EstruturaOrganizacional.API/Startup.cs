@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EstruturaOrganizacional.API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +18,7 @@ namespace EstruturaOrganizacional.API
 {
     public class Startup
     {
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +30,13 @@ namespace EstruturaOrganizacional.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+              //Conexão banco de dados
+
+            services.AddDbContext<DataContext>(
+
+                x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConn"))
+
+            );
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EstruturaOrganizacional.API.Data;
 using EstruturaOrganizacional.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,34 +14,30 @@ namespace EstruturaOrganizacional.API.Controllers
     public class BusinessAreaController : ControllerBase
     {     
 
-        public IEnumerable<BusinessArea> _businessarea = new BusinessArea[]
+        
+        private readonly DataContext _context;
+
+        public BusinessAreaController(DataContext context)
         {
-               new BusinessArea(){
-                BusinessAreaId = 1,
-                Sigla = "cimatec",
-                CodReduzido = "105",
-               },
-               new BusinessArea(){
-                BusinessAreaId = 2,
-                Sigla = "cimatec park",
-                CodReduzido = "106",
-               }           
-        };
+        }
         
         public BusinessAreaController()
         {     
+            _context = context;
         }
 
         [HttpGet]
         public IEnumerable<BusinessArea> Get()
         {
-           return _businessarea;
+           return _context.BusinessArea;
         }
 
         [HttpGet("{id}")]
         public IEnumerable<BusinessArea> GetById(int id)
         {
-           return _businessarea.Where(businessarea => businessarea.BusinessAreaId == id);
+           return _context.BusinessArea.FirstOrDefault(
+               businessarea => businessarea.BusinessAreaId == id
+               );
         }
 
         [HttpPost]
