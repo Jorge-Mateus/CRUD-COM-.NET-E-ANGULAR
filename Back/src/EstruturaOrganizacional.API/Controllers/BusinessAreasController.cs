@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EstruturaOrganizacional.API.Data;
+using EstruturaOrganizacional.API.Data.Migrations;
 using EstruturaOrganizacional.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,32 +12,28 @@ namespace EstruturaOrganizacional.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BusinessAreaController : ControllerBase
+    public class BusinessAreasController : ControllerBase
     {     
 
         
-        private readonly DataContext _context;
+       private readonly DataContext _context;
 
-        public BusinessAreaController(DataContext context)
+        public BusinessAreasController(DataContext context)
         {
-        }
-        
-        public BusinessAreaController()
-        {     
             _context = context;
         }
 
         [HttpGet]
         public IEnumerable<BusinessArea> Get()
         {
-           return _context.BusinessArea;
+           return _context.BusinessAreas;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<BusinessArea> GetById(int id)
+        public BusinessArea GetById(int id)
         {
-           return _context.BusinessArea.FirstOrDefault(
-               businessarea => businessarea.BusinessAreaId == id
+           return _context.BusinessAreas.FirstOrDefault(
+               businessAreas => businessAreas.BusinessAreaId == id
                );
         }
 
@@ -60,3 +57,4 @@ namespace EstruturaOrganizacional.API.Controllers
         }
     }
 }
+
