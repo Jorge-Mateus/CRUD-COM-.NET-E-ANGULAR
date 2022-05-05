@@ -1,9 +1,43 @@
 
-<h1>Unidade de Negocio</h1>
+<h2>Unidade de Negócio</h2>
+<hr>
 
-<div *ngFor="let businessarea of businessareas ">
-  <p><b>Id: </b>{{businessarea.businessAreaId}}</p>
-  <p><b>Descrição: </b> {{businessarea.sigla}} </p>
-  <p><b>Código de Área: </b>{{businessarea.codReduzido}}</p>
-  <hr>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2">Filtro:</label>
+    <input
+    type="text"
+    class="form-contorl mr-2"
+    placeholder="Pesquisar"
+    [(ngModel)]="filtroLista"
+    >
+  </div>
 </div>
+<table class="table table-striped">
+  <thead class=" thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Descrição</th>
+      <th>Código</th>
+      <th>Opção</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="businessareas && businessareas.length">
+    <tr *ngFor="let businessarea of businessareasfiltrados">
+      <td>{{businessarea.businessAreaId}}</td>
+      <td>{{businessarea.sigla}}</td>
+      <td>{{businessarea.codReduzido}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+<button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!businessareas.length">
+    <tr>
+      <td colspan="3" class="text-center">
+        <h4>Nenhuma Unidade de negocio encontrada</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
