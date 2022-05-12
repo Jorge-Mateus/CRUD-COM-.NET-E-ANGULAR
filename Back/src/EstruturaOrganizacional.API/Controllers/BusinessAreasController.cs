@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EstruturaOrganizacional.API.Data;
-using EstruturaOrganizacional.API.Data.Migrations;
-using EstruturaOrganizacional.API.Models;
+using EstruturaOrganizacional.Persistence;
+using EstruturaOrganizacional.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,9 +15,9 @@ namespace EstruturaOrganizacional.API.Controllers
     {     
 
         
-       private readonly DataContext _context;
+       private readonly EstruturaOrganizacionalContext _context;
 
-        public BusinessAreasController(DataContext context)
+        public BusinessAreasController(EstruturaOrganizacionalContext context)
         {
             _context = context;
         }
@@ -26,14 +25,14 @@ namespace EstruturaOrganizacional.API.Controllers
         [HttpGet]
         public IEnumerable<BusinessArea> Get()
         {
-           return _context.BusinessAreas;
+           return _context.BUSINESSAREA;
         }
 
         [HttpGet("{id}")]
         public BusinessArea GetById(int id)
         {
-           return _context.BusinessAreas.FirstOrDefault(
-               businessAreas => businessAreas.BusinessAreaId == id
+           return _context.BUSINESSAREA.FirstOrDefault(
+               businessAreas => businessAreas.id == id
                );
         }
 

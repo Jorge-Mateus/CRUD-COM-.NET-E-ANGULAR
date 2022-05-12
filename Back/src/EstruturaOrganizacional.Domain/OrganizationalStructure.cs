@@ -9,14 +9,14 @@ namespace EstruturaOrganizacional.Domain
     {
         public virtual int id { get; set; }
         public virtual DateTime ano { get; set; }
-        public int BusinessAreasID { get; set; }
-        public BusinessArea BusinessArea { get; set; }
-        public int MarketAreasId { get; set; }
-        public MarketArea MarketArea { get; set; }
-        public int TchnologicalAreasID { get; set; }
-        public TechnologicalArea TchnologicalArea { get; set; }
-        public int OperatingUnitsID { get; set; }
-        public OperatingUnit OperatingUnit { get; set; }
+        public virtual int BusinessAreasID { get; set; }
+        public virtual IEnumerable <BusinessArea> BusinessArea { get; set; }
+        public virtual int MarketAreasId { get; set; }
+        public virtual IEnumerable <MarketArea> MarketArea { get; set; }
+        public virtual int TchnologicalAreasID { get; set; }
+        public virtual IEnumerable <TechnologicalArea> TchnologicalArea { get; set; }
+        public virtual int OperatingUnitsID { get; set; }
+        public virtual IEnumerable <OperatingUnit> OperatingUnit { get; set; }
 
     }   
 

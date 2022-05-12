@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EstruturaOrganizacional.API.Data;
+using EstruturaOrganizacional.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +32,7 @@ namespace EstruturaOrganizacional.API
 
               //Conexão banco de dados
 
-            services.AddDbContext<DataContext>(
+            services.AddDbContext<EstruturaOrganizacionalContext>(
 
                 x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConn"))
 

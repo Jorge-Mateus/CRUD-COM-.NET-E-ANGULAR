@@ -14,7 +14,7 @@ namespace EstruturaOrganizacional.Persistence
         public DbSet <MarketArea> MARKETAREA{ get; set; }
         public DbSet <OperatingUnit> OPERATINGUNIT{ get; set; }
         public DbSet <TechnologicalArea> TECHNOLOGICALAREA{ get; set; }
-        public DbSet <OrganizationalStructure> ORGANIZATIONALSTRUCTURES{ get; set; }
+        public DbSet <OrganizationalStructure> ORGANIZATIONALSTRUCTURE{ get; set; }
 
        protected override void OnModelCreating(ModelBuilder builder)
         {
