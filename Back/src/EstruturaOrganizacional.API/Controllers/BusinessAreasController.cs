@@ -6,6 +6,9 @@ using EstruturaOrganizacional.Persistence;
 using EstruturaOrganizacional.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using EstruturaOrganizacional.Persistence.Contextos;
+using EstruturaOrganizacional.Application.Contratos;
+using Microsoft.AspNetCore.Http;
 
 namespace EstruturaOrganizacional.API.Controllers
 {
@@ -13,46 +16,116 @@ namespace EstruturaOrganizacional.API.Controllers
     [Route("api/[controller]")]
     public class BusinessAreasController : ControllerBase
     {     
+        private IBusinessAreaService _businessAreaService;
 
-        
-       private readonly EstruturaOrganizacionalContext _context;
-
-        public BusinessAreasController(EstruturaOrganizacionalContext context)
+        public BusinessAreasController(IBusinessAreaService businessAreaService)
         {
-            _context = context;
+            _businessAreaService = businessAreaService;
+
         }
 
         [HttpGet]
-        public IEnumerable<BusinessArea> Get()
+        public async Task<IActionResult> Get()
         {
-           return _context.BUSINESSAREA;
-        }
+            try
+            {
+                var businessArea = await _businessAreaService.GetAllBusinessAreaAsync(true);
+                if(businessArea == null) return NotFound("Nenhuma area de negocio encontrada"); 
+                
+                return Ok(businessArea);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar recuperar  area de negocio: {ex.Message}");
+            }
+        } 
 
         [HttpGet("{id}")]
-        public BusinessArea GetById(int id)
+        public async Task <IActionResult> GetById(int id)
         {
-           return _context.BUSINESSAREA.FirstOrDefault(
-               businessAreas => businessAreas.id == id
-               );
+             try
+            {
+                var businessArea = await _businessAreaService.GetAllBusinessAreaByIdAsync(id, true);
+                if(businessArea == null) return NotFound("Nenhuma area de negocio por id encontrada"); 
+                
+                return Ok(businessArea);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar recuperar  area de negocio: {ex.Message}");
+            }
+        }
+
+         [HttpGet("{sigla}/sigla")]
+        public async Task <IActionResult> GetBySigla(string sigla)
+        {
+             try
+            {
+                var businessArea = await _businessAreaService.GetAllBusinessAreaBySiglaAsync(sigla, true);
+                if(businessArea == null) return NotFound("Nenhuma sigla não encontrada"); 
+                
+                return Ok(businessArea);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar recuperar  area de negocio: {ex.Message}");
+            }
         }
 
         [HttpPost]
-        public string Post()
+        public async Task<IActionResult> Post(BusinessArea model)
         {
-            return "exemplo de post";
+            try
+            {
+                var businessArea = await _businessAreaService.AddBusinessArea(model);
+                if(businessArea == null) return BadRequest("Erro ao adicionar uma unidade de negócio"); 
+                
+                return Ok(businessArea);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar adicionar area de negocio: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
-        public string Put(int id)
+        public async Task <IActionResult> Put(int id, BusinessArea model)
         {
-            return $"Exemplo de Put com id = {id}";
+            try
+            {
+                var businessArea = await _businessAreaService.UpdateBusinessArea(id, model);
+                if(businessArea == null) return BadRequest("Erro ao adicionar uma unidade de negócio"); 
+                
+                return Ok(businessArea);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar atualizar area de negocio: {ex.Message}");
+            }
         }
         
         [HttpDelete("{id}")]
 
-        public string Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return $"Exemplo de Delete com id = {id}";
+            try
+            {
+                if( await _businessAreaService.Delete(id))
+                    return Ok("Deletado");
+                else
+                    return BadRequest("Ara nao deletada!");
+                
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                $"Erro ao tentar deletar area de negocio: {ex.Message}");
+            }
         }
     }
 }

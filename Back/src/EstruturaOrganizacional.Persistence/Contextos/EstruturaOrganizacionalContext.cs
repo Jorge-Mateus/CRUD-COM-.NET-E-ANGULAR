@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using EstruturaOrganizacional.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace EstruturaOrganizacional.Persistence
+namespace EstruturaOrganizacional.Persistence.Contextos
 {
     public class EstruturaOrganizacionalContext : DbContext
     {

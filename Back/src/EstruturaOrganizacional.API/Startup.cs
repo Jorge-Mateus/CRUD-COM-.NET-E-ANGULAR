@@ -1,18 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EstruturaOrganizacional.Persistence.Contextos;
 using EstruturaOrganizacional.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using EstruturaOrganizacional.Application.Contratos;
+using EstruturaOrganizacional.Application;
+using EstruturaOrganizacional.Persistence.Contratos;
 
 namespace EstruturaOrganizacional.API
 {
@@ -38,6 +35,12 @@ namespace EstruturaOrganizacional.API
 
             );
             services.AddControllers();
+
+
+            services.AddScoped<IBusinessAreaService, BusinessAreaService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<IBusinessAreaPersist, BusinessAreaPersist>();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EstruturaOrganizacional.API", Version = "v1" });
