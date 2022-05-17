@@ -17,19 +17,26 @@
   <thead class=" thead-dark">
     <tr>
       <th>#</th>
-      <th>Descrição</th>
-      <th>Código</th>
-      <th>Opção</th>
+      <th style="text-align: center; vertical-align:middle !important">Descrição</th>
+      <th style="text-align: center; vertical-align:middle !important">Sigla do Negócio</th>
+      <th style="text-align: center; vertical-align:middle !important">Código EMS</th>
+      <th style="text-align: center; vertical-align:middle !important">Opção</th>
     </tr>
   </thead>
   <tbody *ngIf="businessareas && businessareas.length">
     <tr *ngFor="let businessarea of businessareasfiltrados">
-      <td>{{businessarea.businessAreaId}}</td>
-      <td>{{businessarea.sigla}}</td>
-      <td>{{businessarea.codReduzido}}</td>
-      <td>
-        <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
-<button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      <td style="text-align: center; vertical-align:middle !important">{{businessarea.Id}}</td>
+      <td style="text-align: center; vertical-align:middle !important">{{businessarea.descricao}}</td>
+      <td style="text-align: center; vertical-align:middle !important">{{businessarea.sigla}}</td>
+      <td style="text-align: center; vertical-align:middle !important">{{businessarea.codEMS}}</td>
+      <td style="text-align: center; vertical-align:middle !important">
+
+        <button type="button" class="btn btn-primary btn-sm mr-2 " tooltip="Editar">
+          <i class="fa fa-edit"></i>
+        </button>
+      <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal(template)">
+        <i class="fa fa-trash"></i>
+        </button>
       </td>
     </tr>
   </tbody>
@@ -41,3 +48,12 @@
     </tr>
   </tfoot>
 </table>
+
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja deletar este negocio?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
