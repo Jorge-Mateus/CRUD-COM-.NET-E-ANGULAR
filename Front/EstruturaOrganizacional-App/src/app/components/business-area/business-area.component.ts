@@ -2,9 +2,10 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { BusinessArea } from 'src/app/model/BusinessArea';
+import { BunissesAreaService } from 'src/app/services/bunissesArea.service';
 
-import { BusinessArea } from '../model/BusinessArea';
-import { BunissesAreaService } from '../services/bunissesArea.service';
+
 
 @Component({
   selector: 'app-business-area',

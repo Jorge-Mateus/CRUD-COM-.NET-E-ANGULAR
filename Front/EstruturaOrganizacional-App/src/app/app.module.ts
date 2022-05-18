@@ -13,15 +13,23 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
-import { NavComponent } from './Nav/Nav.component';
-import { BusinessAreaComponent } from './business-area/business-area.component';
-import { MarketAreaComponent } from './market-area/market-area.component';
+import { NavComponent } from './shared/Nav/Nav.component';
+
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { BunissesAreaService } from './services/bunissesArea.service';
+import { MarketAreaComponent } from './components/market-area/market-area.component';
 
 import { DateFormatPipe } from './helpers/DateFormat.pipe';
+
+import { TechnologicalareaComponent } from './components/technologicalarea/technologicalarea.component';
+import { OperitingunitsComponent } from './components/operitingunits/operitingunits.component';
+import { OrganationalstructureComponent } from './components/organationalstructure/organationalstructure.component';
+import { BusinessAreaComponent } from './components/business-area/business-area.component';
+import { TituloComponent } from './shared/titulo/titulo.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 
@@ -30,7 +38,13 @@ import { DateFormatPipe } from './helpers/DateFormat.pipe';
     AppComponent,
     BusinessAreaComponent,
     MarketAreaComponent,
+    OperitingunitsComponent,
+    OrganationalstructureComponent,
+    TechnologicalareaComponent,
     NavComponent,
+    TituloComponent,
+    DashboardComponent,
+    PerfilComponent,
     DateFormatPipe
    ],
   imports: [
