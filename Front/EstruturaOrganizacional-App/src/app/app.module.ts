@@ -29,7 +29,12 @@ import { OrganationalstructureComponent } from './components/organationalstructu
 import { BusinessAreaComponent } from './components/business-area/business-area.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { PerfilComponent } from './components/user/perfil/perfil.component';
+import { BusinessAreaDetalhesComponent } from './components/business-area/business-area-detalhes/business-area-detalhes.component';
+import { BusinessAreaListaComponent } from './components/business-area/business-area-lista/business-area-lista.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 
 
@@ -45,7 +50,12 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     TituloComponent,
     DashboardComponent,
     PerfilComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    BusinessAreaDetalhesComponent,
+    BusinessAreaListaComponent,
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent
    ],
   imports: [
     BrowserModule,
