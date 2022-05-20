@@ -1,7 +1,7 @@
 export interface BusinessArea {
       id: number;
-      sigla: string;
       descricao: string;
+      sigla: string;
       codEMS: string;
 
 }
