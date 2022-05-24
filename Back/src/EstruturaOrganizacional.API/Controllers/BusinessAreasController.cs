@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using EstruturaOrganizacional.Persistence.Contextos;
 using EstruturaOrganizacional.Application.Contratos;
 using Microsoft.AspNetCore.Http;
+using EstruturaOrganizacional.Application.Dtos;
 
 namespace EstruturaOrganizacional.API.Controllers
 {
@@ -30,7 +31,7 @@ namespace EstruturaOrganizacional.API.Controllers
             try
             {
                 var businessArea = await _businessAreaService.GetAllBusinessAreaAsync(true);
-                if(businessArea == null) return NotFound("Nenhuma area de negocio encontrada"); 
+                if(businessArea == null) return NoContent();
                 
                 return Ok(businessArea);
             }
@@ -47,7 +48,7 @@ namespace EstruturaOrganizacional.API.Controllers
              try
             {
                 var businessArea = await _businessAreaService.GetAllBusinessAreaByIdAsync(id, true);
-                if(businessArea == null) return NotFound("Nenhuma area de negocio por id encontrada"); 
+                if(businessArea == null) return NoContent(); 
                 
                 return Ok(businessArea);
             }
@@ -64,7 +65,7 @@ namespace EstruturaOrganizacional.API.Controllers
              try
             {
                 var businessArea = await _businessAreaService.GetAllBusinessAreaBySiglaAsync(sigla, true);
-                if(businessArea == null) return NotFound("Nenhuma sigla não encontrada"); 
+                if(businessArea == null) return NoContent(); 
                 
                 return Ok(businessArea);
             }
@@ -76,12 +77,12 @@ namespace EstruturaOrganizacional.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(BusinessArea model)
+        public async Task<IActionResult> Post(BusinessAreaDto model)
         {
             try
             {
                 var businessArea = await _businessAreaService.AddBusinessArea(model);
-                if(businessArea == null) return BadRequest("Erro ao adicionar uma unidade de negócio"); 
+                if(businessArea == null) return NoContent(); 
                 
                 return Ok(businessArea);
             }
@@ -93,13 +94,12 @@ namespace EstruturaOrganizacional.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task <IActionResult> Put(int id, BusinessArea model)
+        public async Task <IActionResult> Put(int id, BusinessAreaDto model)
         {
             try
             {
                 var businessArea = await _businessAreaService.UpdateBusinessArea(id, model);
-                if(businessArea == null) return BadRequest("Erro ao adicionar uma unidade de negócio"); 
-                
+                if(businessArea == null) return NoContent();
                 return Ok(businessArea);
             }
             catch (Exception ex)
@@ -115,11 +115,15 @@ namespace EstruturaOrganizacional.API.Controllers
         {
             try
             {
-                if( await _businessAreaService.Delete(id))
-                    return Ok("Deletado");
-                else
-                    return BadRequest("Ara nao deletada!");
-                
+                var result = await _businessAreaService.GetAllBusinessAreaByIdAsync(id);
+
+                if(result != null){
+                    result.IsDeleted = false;
+                    await _businessAreaService.UpdateBusinessArea(id, result);
+                    return Ok(result);
+                }
+
+                return BadRequest("Área de negócio não encontrada");
             }
             catch (Exception ex)
             {

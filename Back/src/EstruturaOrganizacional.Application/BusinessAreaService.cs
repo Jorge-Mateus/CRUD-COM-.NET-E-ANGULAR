@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EstruturaOrganizacional.Application.Contratos;
+using EstruturaOrganizacional.Application.Dtos;
 using EstruturaOrganizacional.Domain;
 using EstruturaOrganizacional.Persistence.Contratos;
 
@@ -13,19 +15,28 @@ namespace EstruturaOrganizacional.Application
     {
         private readonly IGeralPersist _geralPersist;
         private  readonly IBusinessAreaPersist _businessAreaPersist;
-        public BusinessAreaService(IGeralPersist geralPersist, IBusinessAreaPersist businessAreaPersist)
+        private readonly IMapper _mapper;
+        public BusinessAreaService(IGeralPersist geralPersist, 
+                                   IBusinessAreaPersist businessAreaPersist,
+                                   IMapper mapper)
         {
             _businessAreaPersist = businessAreaPersist;
             _geralPersist = geralPersist;
+            _mapper = mapper;
         }
-        public async Task<BusinessArea> AddBusinessArea(BusinessArea model)
+        public async Task<BusinessAreaDto> AddBusinessArea(BusinessAreaDto model)
         {
             try
             {
-                _geralPersist.Add<BusinessArea>(model);
+                var businessarea = _mapper.Map<BusinessArea>(model);
+
+                _geralPersist.Add<BusinessArea>(businessarea);
+
                 if(await _geralPersist.SaveChangesAsyncs())
                 {
-                    return await _businessAreaPersist.GetAllBusinessAreaByIdAsync(model.id, false);
+                    var retorno = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(businessarea.id, false);
+
+                    return _mapper.Map<BusinessAreaDto>(retorno);
                 }
 
                 return null;
@@ -36,7 +47,7 @@ namespace EstruturaOrganizacional.Application
                 
             }
         }
-        public async Task<BusinessArea> UpdateBusinessArea(int id, BusinessArea model)
+        public async Task<BusinessAreaDto> UpdateBusinessArea(int id, BusinessAreaDto model)
         {
             try
             {
@@ -45,11 +56,15 @@ namespace EstruturaOrganizacional.Application
 
                 model.id = businessarea.id;
 
-                _geralPersist.Update(model);
+                _mapper.Map(model, businessarea);
+
+                _geralPersist.Update<BusinessArea>(businessarea);
 
                 if(await _geralPersist.SaveChangesAsyncs())
                 {
-                    return await _businessAreaPersist.GetAllBusinessAreaByIdAsync(model.id);
+                    var retorno = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(businessarea.id, false);
+
+                    return _mapper.Map<BusinessAreaDto>(retorno);
                 }
                 return null;
             }
@@ -76,14 +91,17 @@ namespace EstruturaOrganizacional.Application
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<BusinessArea[]> GetAllBusinessAreaAsync(bool includeUnidad = false)
+        public async Task<BusinessAreaDto[]> GetAllBusinessAreaAsync(bool includeUnidad = false)
         {
             try
             {
-                var businessarea = await _businessAreaPersist.GetAllBusinessAreaAsync(includeUnidad);
-                if( businessarea == null )return null;
+                var businessareas = await _businessAreaPersist.GetAllBusinessAreaAsync(includeUnidad);
+                if( businessareas == null )return null;
 
-                return businessarea;
+                var resultado = _mapper.Map<BusinessAreaDto[]>(businessareas);
+
+                return resultado;
+                
             }
             catch (Exception ex)
             {
@@ -91,14 +109,16 @@ namespace EstruturaOrganizacional.Application
             }
         }
 
-        public async Task<BusinessArea[]> GetAllBusinessAreaBySiglaAsync(string sigla, bool includeUnidade = false)
+        public async Task<BusinessAreaDto[]> GetAllBusinessAreaBySiglaAsync(string sigla, bool includeUnidade = false)
         {
             try
             {
-                var businessarea = await _businessAreaPersist.GetAllBusinessAreaBySiglaAsync(sigla,includeUnidade);
-                if( businessarea == null )return null;
+                var businessareas = await _businessAreaPersist.GetAllBusinessAreaBySiglaAsync(sigla,includeUnidade);
+                if( businessareas == null )return null;
+               
+                var resultado = _mapper.Map<BusinessAreaDto[]>(businessareas);
 
-                return businessarea;
+                return resultado;
             }
             catch (Exception ex)
             {
@@ -106,14 +126,22 @@ namespace EstruturaOrganizacional.Application
             }
         }
 
-        public async Task<BusinessArea> GetAllBusinessAreaByIdAsync(int id, bool includeUnidade = false)
+        public async Task<BusinessAreaDto> GetAllBusinessAreaByIdAsync(int id, bool includeUnidade = false)
         {
             try
             {
                 var businessarea = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(id, includeUnidade);
-                if( businessarea == null )return null;
+                if( businessarea == null)return null;
+                if(businessarea.IsDeleted == false){
+                    return null;
+                } 
+                else
+                {
+                    var resultado = _mapper.Map<BusinessAreaDto>(businessarea);
+                    return resultado;
+                }
 
-                return businessarea;
+              
             }
             catch (Exception ex)
             {

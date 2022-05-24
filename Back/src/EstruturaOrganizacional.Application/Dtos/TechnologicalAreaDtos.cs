@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EstruturaOrganizacional.Domain
+namespace EstruturaOrganizacional.Application.Dtos
 {
-    public class TechnologicalArea
+    public class TechnologicalAreaDtos
     {
         public virtual int id { get; set; }
         public virtual string descricao { get; set; }

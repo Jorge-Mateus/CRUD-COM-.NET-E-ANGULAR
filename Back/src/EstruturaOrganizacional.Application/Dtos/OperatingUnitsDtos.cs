@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EstruturaOrganizacional.Domain
+namespace EstruturaOrganizacional.Application.Dtos
 {
-    public class OperatingUnit
+    public class OperatingUnitsDtos
     {
-       public virtual int id { get; set; } 
+    public virtual int id { get; set; } 
        public virtual string sigla { get; set; }
        public virtual string descricao { get; set; }
        public virtual string codReduzido { get; set; }

@@ -16,7 +16,8 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     TchnologicalAreasID = table.Column<int>(type: "int", nullable: false),
                     OperatingUnitsID = table.Column<int>(type: "int", nullable: false),
                     id = table.Column<int>(type: "int", nullable: false),
-                    ano = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ano = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,6 +33,7 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     sigla = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     codEMS = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     OrganizationalStructureBusinessAreasID = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureMarketAreasId = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureOperatingUnitsID = table.Column<int>(type: "int", nullable: true),
@@ -55,6 +57,7 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     OrganizationalStructureBusinessAreasID = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureMarketAreasId = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureOperatingUnitsID = table.Column<int>(type: "int", nullable: true),
@@ -80,6 +83,7 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     sigla = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     codReduzido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     OrganizationalStructureBusinessAreasID = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureMarketAreasId = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureOperatingUnitsID = table.Column<int>(type: "int", nullable: true),
@@ -104,6 +108,7 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     unidadeVirtual = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     OrganizationalStructureBusinessAreasID = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureMarketAreasId = table.Column<int>(type: "int", nullable: true),
                     OrganizationalStructureOperatingUnitsID = table.Column<int>(type: "int", nullable: true),

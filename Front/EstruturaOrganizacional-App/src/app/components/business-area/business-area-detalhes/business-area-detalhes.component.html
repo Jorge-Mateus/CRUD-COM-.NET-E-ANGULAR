@@ -12,11 +12,11 @@
             Descrição é obrigatória o preenchimento!
           </div>
 
-          <div *ngIf="f.descricao.errors?.minLength" class="invalid-feedback">
+          <div *ngIf="f.descricao.errors?.minlength" class="invalid-feedback">
             Descrição minima é de 4 caracteres!
           </div>
 
-          <div *ngIf="f.descricao.errors?.maxLength" class="invalid-feedback">
+          <div *ngIf="f.descricao.errors?.maxlength" class="invalid-feedback">
             Descrição maxima é de 50 caracteres!
           </div>
         </div>
@@ -29,10 +29,10 @@
           <div  *ngIf="f.sigla.errors?.required" class="invalid-feedback">
             Sigla é obrigatória o preenchimento!
           </div>
-          <div  *ngIf="f.sigla.errors?.maxLength" class="invalid-feedback">
+          <div  *ngIf="f.sigla.errors?.maxlength" class="invalid-feedback">
             Tamanho maximo é de 10 caracteres.
           </div>
-          <div *ngIf="f.sigla.errors?.minLength" class="invalid-feedback">
+          <div *ngIf="f.sigla.errors?.minlength" class="invalid-feedback">
             Descrição minima é de 3 caracteres!
           </div>
         </div>
@@ -41,9 +41,9 @@
           <input type="text" class="form-control" [ngClass]="{'is-invalid': f.codEMS.errors && f.codEMS.touched }"
           formControlName="codEMS" placeholder="">
           <div  *ngIf="f.codEMS.errors?.required" class="invalid-feedback">
-            Sigla é obrigatória o preenchimento!
+            Código é obrigatória o preenchimento!
           </div>
-          <div  *ngIf="f.codEMS.errors?.maxLength" class="invalid-feedback">
+          <div  *ngIf="f.codEMS.errors?.maxlength" class="invalid-feedback">
             Tamanho maximo é de 10 caracteres.
           </div>
         </div>

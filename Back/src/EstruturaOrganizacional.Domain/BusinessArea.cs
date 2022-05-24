@@ -11,6 +11,7 @@ namespace EstruturaOrganizacional.Domain
         public virtual string sigla { get; set; }
         public virtual string descricao { get; set; }
         public virtual string codEMS { get; set; }
+        public virtual bool IsDeleted { get; set; }
 
     }
 }

@@ -2,19 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EstruturaOrganizacional.Domain;
+using EstruturaOrganizacional.Application.Dtos;
+
 
 namespace EstruturaOrganizacional.Application.Contratos
 {
     public interface IBusinessAreaService
     {
-        Task<BusinessArea> AddBusinessArea(BusinessArea model);
-        Task<BusinessArea> UpdateBusinessArea(int id, BusinessArea model);
+        Task<BusinessAreaDto> AddBusinessArea(BusinessAreaDto model);
+        Task<BusinessAreaDto> UpdateBusinessArea(int id, BusinessAreaDto model);
         Task<bool> Delete(int id);
 
-        Task<BusinessArea[]> GetAllBusinessAreaAsync(bool includeUnidad = false);
-        Task<BusinessArea[]> GetAllBusinessAreaBySiglaAsync(string sigla, bool includeUnidade = false);
-        Task<BusinessArea> GetAllBusinessAreaByIdAsync(int id, bool includeUnidade = false);
+        Task<BusinessAreaDto[]> GetAllBusinessAreaAsync(bool includeUnidad = false);
+        Task<BusinessAreaDto[]> GetAllBusinessAreaBySiglaAsync(string sigla, bool includeUnidade = false);
+        Task<BusinessAreaDto> GetAllBusinessAreaByIdAsync(int id, bool includeUnidade = false);
         
     }
 }

@@ -9,7 +9,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using EstruturaOrganizacional.Application.Contratos;
 using EstruturaOrganizacional.Application;
+using AutoMapper;
 using EstruturaOrganizacional.Persistence.Contratos;
+using System;
 
 namespace EstruturaOrganizacional.API
 {
@@ -36,6 +38,7 @@ namespace EstruturaOrganizacional.API
             );
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IBusinessAreaService, BusinessAreaService>();
             services.AddScoped<IGeralPersist, GeralPersist>();

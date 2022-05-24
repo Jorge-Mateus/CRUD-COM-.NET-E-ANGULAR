@@ -27,7 +27,7 @@ export class BusinessAreaDetalhesComponent implements OnInit {
 
   public validation() : void{
     this.form = this.fb.group({
-      descricao: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
+      descricao: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(55)]],
       sigla: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(3)]],
       codEMS: ['', [Validators.required, Validators.maxLength(15)]],
     });
