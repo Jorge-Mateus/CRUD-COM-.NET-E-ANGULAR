@@ -20,6 +20,7 @@ namespace EstruturaOrganizacional.Application.Dtos
 
         [Required(ErrorMessage ="O campo {0} é obrigatório o preenchimento")]
         public virtual string codEMS { get; set; }
+
         public virtual bool IsDeleted { get; set; }
 
     }

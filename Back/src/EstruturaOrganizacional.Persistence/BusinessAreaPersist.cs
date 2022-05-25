@@ -24,7 +24,7 @@ namespace EstruturaOrganizacional.Persistence
         {
             IQueryable<BusinessArea> query = _context.BUSINESSAREA;
 
-            query = query.AsNoTracking().OrderBy(an => an.id).Where (an => an.IsDeleted != false);
+            query = query.AsNoTracking().OrderBy(an => an.id).Where(an => an.IsDeleted == false);
 
             return await query.ToArrayAsync();
         }
@@ -34,7 +34,8 @@ namespace EstruturaOrganizacional.Persistence
            IQueryable<BusinessArea> query = _context.BUSINESSAREA;
 
            
-            query = query.AsNoTracking().OrderBy(an => an.id).Where(an => an.sigla.ToLower().Contains(sigla.ToLower()));
+            query = query.AsNoTracking().OrderBy(an => an.id).Where(an => an.IsDeleted == false &&
+                                                                    an.sigla.ToLower().Contains(sigla.ToLower()));
 
             return await query.ToArrayAsync();
         }
@@ -43,7 +44,8 @@ namespace EstruturaOrganizacional.Persistence
         {
             IQueryable<BusinessArea> query = _context.BUSINESSAREA;
             
-            query = query.AsNoTracking().OrderBy(an => an.id).Where(an => an.id == id );
+            query = query.AsNoTracking().OrderBy(an => an.id).Where(an => an.IsDeleted == false &&
+                                                                    an.id == id );
                          
             return await query.FirstOrDefaultAsync();
         }

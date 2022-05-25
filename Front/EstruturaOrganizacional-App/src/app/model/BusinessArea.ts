@@ -3,7 +3,7 @@ export interface BusinessArea {
       descricao: string;
       sigla: string;
       codEMS: string;
-
+      IsDeleted: boolean;
 }
 
 

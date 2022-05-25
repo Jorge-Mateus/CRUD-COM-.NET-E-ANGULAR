@@ -17,6 +17,8 @@ export class BusinessAreaListaComponent implements OnInit {
   public businessareas: BusinessArea[] = [];
   public businessareasfiltrados: BusinessArea[] = [];
   private filtroListado = '';
+  public businessareasId = 0;
+  public businessareaIsDeleted = false;
 
   public get filtroLista() {
     return this.filtroListado;
@@ -44,7 +46,7 @@ export class BusinessAreaListaComponent implements OnInit {
     ) { }
 
   public ngOnInit(): void {
-    this.getBusinessArea();
+    this.getCarregarBusinessArea();
 
     this.spinner.show();
 
@@ -54,7 +56,7 @@ export class BusinessAreaListaComponent implements OnInit {
     }, 5000);
   }
 
-  public getBusinessArea(): void {
+  public getCarregarBusinessArea(): void {
     this.bunissesAreaservice.getBunissesArea().subscribe(
       (businessAreasResp: BusinessArea[]) => {
         this.businessareas = businessAreasResp;
@@ -64,13 +66,36 @@ export class BusinessAreaListaComponent implements OnInit {
     );
   }
 
-  openModal(template: TemplateRef<any>): void {
+  openModal(event: any, template: TemplateRef<any>, businessareasId: number, businessareaIsDeleted: boolean): void {
+    event.stopPropagation();
+    this.businessareasId = businessareasId;
+    this.businessareaIsDeleted = businessareaIsDeleted;
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
 
+
+
   confirm(): void {
-    this.toastr.success('A unidade operacional foi deletada com sucesso', 'Deletado');
+    //Modificar a parte de confirmação do delete para que ele seja === e não diferente!
     this.modalRef.hide();
+    this.spinner.show();
+    this.bunissesAreaservice.deleteBunisses(this.businessareasId).subscribe(
+      (result: string) => {
+        if (result = 'Ok'){
+          console.log(result);
+          this.toastr.success('A unidade operacional foi deletada com sucesso', 'Deletado');
+          this.spinner.hide();
+          this.getCarregarBusinessArea();
+        }
+      },
+      (error: any) => {
+
+        this.toastr.error('Erro ao tentar deletar a unidade operacional');
+        this.spinner.hide();
+        console.error(error);
+      },
+      () => this.spinner.hide(),
+    );
 
   }
 

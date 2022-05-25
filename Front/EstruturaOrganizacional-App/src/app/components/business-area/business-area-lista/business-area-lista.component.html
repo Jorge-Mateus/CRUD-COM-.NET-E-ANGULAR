@@ -30,10 +30,7 @@
         <td style="text-align: center; vertical-align:middle !important">{{businessarea.sigla}}</td>
         <td style="text-align: center; vertical-align:middle !important">{{businessarea.codEMS}}</td>
         <td style="text-align: center; vertical-align:middle !important">
-          <button type="button" class="btn btn-primary btn-sm mr-2 " tooltip="Editar">
-            <i class="fa fa-edit"></i>
-          </button>
-          <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal(template)">
+          <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, businessarea.id)">
             <i class="fa fa-trash"></i>
           </button>
         </td>

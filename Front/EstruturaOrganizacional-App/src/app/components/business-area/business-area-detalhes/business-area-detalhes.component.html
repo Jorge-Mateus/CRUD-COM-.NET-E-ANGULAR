@@ -5,7 +5,7 @@
         <div class="form-group col-md-12">
           <label>Descrição</label>
 
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.descricao.errors && f.descricao.touched }"
+          <input type="text" class="form-control" [ngClass]="cssValidador(f.descricao)"
           formControlName="descricao" placeholder="Informe a unidade de negocio">
 
           <div *ngIf="f.descricao.errors?.required" class="invalid-feedback">
@@ -24,7 +24,7 @@
       <div class="form-row">
         <div class="form-group col-md-8">
           <label>Sigla</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.sigla.errors && f.sigla.touched }"
+          <input type="text" class="form-control"  [ngClass]="cssValidador(f.sigla)"
           formControlName="sigla" placeholder="">
           <div  *ngIf="f.sigla.errors?.required" class="invalid-feedback">
             Sigla é obrigatória o preenchimento!
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group col-md-4">
           <label>Código EMS</label>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': f.codEMS.errors && f.codEMS.touched }"
+          <input type="text" class="form-control"  [ngClass]="cssValidador(f.codEMS)"
           formControlName="codEMS" placeholder="">
           <div  *ngIf="f.codEMS.errors?.required" class="invalid-feedback">
             Código é obrigatória o preenchimento!
@@ -54,7 +54,7 @@
         <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()">
           Cancelar Alteração
         </button>
-        <button class="btn btn-success" [disabled]="!form.valid">
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">
           <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
           Salvar unidade
         </button>

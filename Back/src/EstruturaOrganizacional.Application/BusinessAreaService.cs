@@ -74,17 +74,26 @@ namespace EstruturaOrganizacional.Application
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id, BusinessAreaDto model)
         {
-            try
-            {
+            try{
                 var businessarea = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(id);
-                if(businessarea == null) throw new Exception ("A area de negocio não foi encontrada!");
+                if(businessarea == null) return false;
 
-                _geralPersist.Delete<BusinessArea>(businessarea);
+                model.id = businessarea.id;
 
-                return await _geralPersist.SaveChangesAsyncs();
-                
+                _mapper.Map(model, businessarea);
+
+                _geralPersist.Update<BusinessArea>(businessarea);
+
+                if(await _geralPersist.SaveChangesAsyncs())
+                {
+                    var retorno = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(businessarea.id, false);
+
+                    return true;
+                }
+
+                return await _geralPersist.SaveChangesAsyncs();                
             }
             catch (Exception ex)
             {
@@ -132,9 +141,7 @@ namespace EstruturaOrganizacional.Application
             {
                 var businessarea = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(id, includeUnidade);
                 if( businessarea == null)return null;
-                if(businessarea.IsDeleted == false){
-                    return null;
-                } 
+              
                 else
                 {
                     var resultado = _mapper.Map<BusinessAreaDto>(businessarea);

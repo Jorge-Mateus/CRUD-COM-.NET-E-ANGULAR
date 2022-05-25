@@ -82,8 +82,9 @@ namespace EstruturaOrganizacional.API.Controllers
             try
             {
                 var businessArea = await _businessAreaService.AddBusinessArea(model);
-                if(businessArea == null) return NoContent(); 
                 
+                if(businessArea == null) return NoContent(); 
+
                 return Ok(businessArea);
             }
             catch (Exception ex)
@@ -119,10 +120,13 @@ namespace EstruturaOrganizacional.API.Controllers
 
                 if(result != null){
                     result.IsDeleted = false;
-                    await _businessAreaService.UpdateBusinessArea(id, result);
-                    return Ok(result);
+                   return await _businessAreaService.Delete(id, result)
+                            ? Ok(new{message = "Deletado"})
+                            : throw new Exception("Ocorreu o erro inesperado ao deletar");
+                    
                 }
 
+                
                 return BadRequest("Área de negócio não encontrada");
             }
             catch (Exception ex)

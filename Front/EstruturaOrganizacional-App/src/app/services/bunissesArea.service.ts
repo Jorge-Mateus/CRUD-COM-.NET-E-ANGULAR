@@ -12,16 +12,28 @@ export class BunissesAreaService {
 
 constructor(private http: HttpClient) { }
 
-getBunissesArea(): Observable<BusinessArea[]> {
+public getBunissesArea(): Observable<BusinessArea[]> {
   return this.http.get<BusinessArea[]>(this.baseUrl);
 }
 
-getBunissesAreaBySigla(sigla: string): Observable<BusinessArea[]> {
+public getBunissesAreaBySigla(sigla: string): Observable<BusinessArea[]> {
   return this.http.get<BusinessArea[]>(`${this.baseUrl}/${sigla}/sigla`);
 }
 
-getBunissesAreaById(id: number): Observable<BusinessArea> {
+public getBunissesAreaById(id: number): Observable<BusinessArea> {
   return this.http.get<BusinessArea>(`${this.baseUrl}/${id}`);
+}
+
+public postBunisses(businessArea: BusinessArea): Observable<BusinessArea> {
+  return this.http.post<BusinessArea>(this.baseUrl, businessArea);
+}
+
+public putBunisses(id: number, businessArea: BusinessArea): Observable<BusinessArea> {
+  return this.http.put<BusinessArea>(`${this.baseUrl}/${id}`, businessArea);
+}
+
+public deleteBunisses(id: number): Observable<any> {
+  return this.http.delete<any>(`${this.baseUrl}/${id}`);
 }
 
 }

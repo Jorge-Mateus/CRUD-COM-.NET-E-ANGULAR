@@ -11,7 +11,7 @@ namespace EstruturaOrganizacional.Application.Contratos
     {
         Task<BusinessAreaDto> AddBusinessArea(BusinessAreaDto model);
         Task<BusinessAreaDto> UpdateBusinessArea(int id, BusinessAreaDto model);
-        Task<bool> Delete(int id);
+        Task<bool> Delete(int id, BusinessAreaDto model);
 
         Task<BusinessAreaDto[]> GetAllBusinessAreaAsync(bool includeUnidad = false);
         Task<BusinessAreaDto[]> GetAllBusinessAreaBySiglaAsync(string sigla, bool includeUnidade = false);

@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -69,6 +71,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     NgxSpinnerModule
   ],
   providers: [
