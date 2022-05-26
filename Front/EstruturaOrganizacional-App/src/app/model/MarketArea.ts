@@ -1,5 +1,6 @@
 export interface MarketArea {
 
   id: number;
-  descricao :string;
+  descricao: string;
+  IsDeleted: boolean;
 }

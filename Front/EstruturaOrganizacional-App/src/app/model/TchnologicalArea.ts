@@ -1,6 +1,7 @@
 export interface TchnologicalArea {
 
-      id : Number;
-      descricao : string;
-      unidadeVirtual : string;
+      id: number;
+      descricao: string;
+      unidadeVirtual: string;
+      IsDeleted: boolean;
 }

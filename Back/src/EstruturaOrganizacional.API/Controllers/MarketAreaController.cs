@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,30 +15,30 @@ namespace EstruturaOrganizacional.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BusinessAreasController : ControllerBase
-    {     
-        private IBusinessAreaService _businessAreaService;
-
-        public BusinessAreasController(IBusinessAreaService businessAreaService)
+    public class MarketAreaController : ControllerBase
+    {   
+        private IMarketAreaService _marketAreaService;
+        
+        public MarketAreaController(IMarketAreaService marketAreaService )
         {
-            _businessAreaService = businessAreaService;
-
+            _marketAreaService = marketAreaService;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var businessArea = await _businessAreaService.GetAllBusinessAreaAsync(true);
-                if(businessArea == null) return NoContent();
+                var marketArea = await _marketAreaService.GetAllMarketAreaAsync(true);
+                if(marketArea == null) return NoContent();
                 
-                return Ok(businessArea);
+                return Ok(marketArea);
             }
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                $"Erro ao tentar recuperar  area de negocio: {ex.Message}");
+                $"Erro ao tentar area de mercado: {ex.Message}");
             }
         } 
 
@@ -47,10 +47,10 @@ namespace EstruturaOrganizacional.API.Controllers
         {
              try
             {
-                var businessArea = await _businessAreaService.GetAllBusinessAreaByIdAsync(id, true);
-                if(businessArea == null) return NoContent(); 
+                var marketArea = await _marketAreaService.GetAllMarketAreaByIdAsync(id, true);
+                if(marketArea == null) return NoContent(); 
                 
-                return Ok(businessArea);
+                return Ok(marketArea);
             }
             catch (Exception ex)
             {
@@ -59,15 +59,15 @@ namespace EstruturaOrganizacional.API.Controllers
             }
         }
 
-        [HttpGet("{sigla}/sigla")]
-        public async Task <IActionResult> GetBySigla(string sigla)
+        [HttpGet("{descricao}/descricao")]
+        public async Task <IActionResult> GetByDescricao(string descricao)
         {
              try
             {
-                var businessArea = await _businessAreaService.GetAllBusinessAreaBySiglaAsync(sigla, true);
-                if(businessArea == null) return NoContent(); 
+                var marketArea = await _marketAreaService.GetAllMarketAreaByDescricaoAsync(descricao, true);
+                if(marketArea == null) return NoContent(); 
                 
-                return Ok(businessArea);
+                return Ok(marketArea);
             }
             catch (Exception ex)
             {
@@ -77,15 +77,15 @@ namespace EstruturaOrganizacional.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(BusinessAreaDto model)
+        public async Task<IActionResult> Post(MarketAreaDtos model)
         {
             try
             {
-                var businessArea = await _businessAreaService.AddBusinessArea(model);
+                var marketArea = await _marketAreaService.AddMarketArea(model);
                 
-                if(businessArea == null) return NoContent(); 
+                if(marketArea == null) return NoContent(); 
 
-                return Ok(businessArea);
+                return Ok(marketArea);
             }
             catch (Exception ex)
             {
@@ -95,13 +95,13 @@ namespace EstruturaOrganizacional.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task <IActionResult> Put(int id, BusinessAreaDto model)
+        public async Task <IActionResult> Put(int id, MarketAreaDtos model)
         {
             try
             {
-                var businessArea = await _businessAreaService.UpdateBusinessArea(id, model);
-                if(businessArea == null) return NoContent();
-                return Ok(businessArea);
+                var marketArea = await _marketAreaService.UpdateMarketArea(id, model);
+                if(marketArea == null) return NoContent();
+                return Ok(marketArea);
             }
             catch (Exception ex)
             {
@@ -109,18 +109,18 @@ namespace EstruturaOrganizacional.API.Controllers
                 $"Erro ao tentar atualizar area de negocio: {ex.Message}");
             }
         }
-        
+
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var result = await _businessAreaService.GetAllBusinessAreaByIdAsync(id);
+                var result = await _marketAreaService.GetAllMarketAreaByIdAsync(id);
 
                 if(result != null){
                     result.IsDeleted = true;
-                   return await _businessAreaService.Delete(id, result)
+                   return await _marketAreaService.Delete(id, result)
                             ? Ok(new{message = "Deletado"})
                             : throw new Exception("Ocorreu o erro inesperado ao deletar");
                     
@@ -135,6 +135,6 @@ namespace EstruturaOrganizacional.API.Controllers
                 $"Erro ao tentar deletar area de negocio: {ex.Message}");
             }
         }
+       
     }
 }
-

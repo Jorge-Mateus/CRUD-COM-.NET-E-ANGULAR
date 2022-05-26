@@ -10,8 +10,8 @@ namespace EstruturaOrganizacional.Persistence.Contratos
     {
         
         //Area de negocio
-        Task<MarketArea[]> GetAllMarketAreaByDescricaoAsync(string descricao);
-        Task<MarketArea[]> GetAllMarketAreaAsync(string descricao );
-        Task<MarketArea> GetAllMarketAreaByIdAsync(int id);
+        Task<MarketArea[]> GetAllMarketAreaByDescricaoAsync(string descricao, bool include = false);
+        Task<MarketArea[]> GetAllMarketAreaAsync(bool include = false);
+        Task<MarketArea> GetAllMarketAreaByIdAsync(int id,bool include = false);
     }
 }

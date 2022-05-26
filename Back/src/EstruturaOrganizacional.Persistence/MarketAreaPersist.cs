@@ -12,6 +12,7 @@ namespace EstruturaOrganizacional.Persistence
     public class MarketAreaPersist : IMarketAreaPersist
     {
         private readonly EstruturaOrganizacionalContext _context;
+
         public MarketAreaPersist(EstruturaOrganizacionalContext context)
         {
             _context = context;
@@ -19,43 +20,31 @@ namespace EstruturaOrganizacional.Persistence
         }
         
         // AREA DE MERCADO
-        public async Task<MarketArea[]> GetAllMarketAreaByDescricaoAsync(string descricao)
+         public async Task<MarketArea[]> GetAllMarketAreaAsync(bool include = false )
         {
-            IQueryable<MarketArea> query = _context.MARKETAREA
-                    .Include(am => am.descricao);
+           IQueryable<MarketArea> query = _context.MARKETAREA;
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(am => am.id);
+            query = query.AsNoTracking().OrderBy(am => am.id).Where(am => am.IsDeleted == false);
+
+            return await query.ToArrayAsync();
+        }
+        
+        public async Task<MarketArea[]> GetAllMarketAreaByDescricaoAsync(string descricao, bool include = false)
+        {
+             IQueryable<MarketArea> query = _context.MARKETAREA;
+
+           
+            query = query.AsNoTracking().OrderBy(am => am.id).Where(am => am.IsDeleted == false && am.descricao.ToLower().Contains(descricao.ToLower()));
+
             return await query.ToArrayAsync();
         }
 
-        public async Task<MarketArea[]> GetAllMarketAreaAsync(string descricao )
+        public async Task<MarketArea> GetAllMarketAreaByIdAsync(int id,bool include = false)
         {
-            IQueryable<MarketArea> query = _context.MARKETAREA 
-                    .Include(am => am.descricao);
-
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
+           IQueryable<MarketArea> query = _context.MARKETAREA;
             
-            query = query.OrderBy(am => am.id).Where(am => am.descricao.ToLower().Contains(descricao.ToLower()));
-            return await query.ToArrayAsync();
-        }
-
-        public async Task<MarketArea> GetAllMarketAreaByIdAsync(int id)
-        {
-            IQueryable<MarketArea> query = _context.MARKETAREA 
-                    .Include(am => am.descricao);
-
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(am => am.id)
-                         .Where(am => am.id == id);
+            query = query.AsNoTracking().OrderBy(am => am.id).Where(am => am.IsDeleted == false && am.id == id );
+                         
             return await query.FirstOrDefaultAsync();
         }
     }

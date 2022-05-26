@@ -23,5 +23,6 @@ namespace EstruturaOrganizacional.Application.Dtos
 
         public virtual bool IsDeleted { get; set; }
 
+
     }
 }

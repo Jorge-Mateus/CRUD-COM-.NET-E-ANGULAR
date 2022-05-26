@@ -1,6 +1,7 @@
 export interface OperatingUnit {
-   id : Number;
-   sigla : string;
-   descricao : string;
-   codReduzido : string;
+   id: number;
+   sigla: string;
+   descricao: string;
+   codReduzido: string;
+   IsDeleted: boolean;
 }

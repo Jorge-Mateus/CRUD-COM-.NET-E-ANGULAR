@@ -43,6 +43,10 @@ namespace EstruturaOrganizacional.API
             services.AddScoped<IBusinessAreaService, BusinessAreaService>();
             services.AddScoped<IGeralPersist, GeralPersist>();
             services.AddScoped<IBusinessAreaPersist, BusinessAreaPersist>();
+
+            services.AddScoped<IMarketAreaService, MarketAreaService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();//TALVEZ CAUSE CONFLITO
+            services.AddScoped<IMarketAreaPersist, MarketAreaPersist>();
             
             services.AddSwaggerGen(c =>
             {

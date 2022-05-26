@@ -14,8 +14,9 @@ namespace EstruturaOrganizacional.Application
     public class BusinessAreaService : IBusinessAreaService
     {
         private readonly IGeralPersist _geralPersist;
-        private  readonly IBusinessAreaPersist _businessAreaPersist;
+        private readonly IBusinessAreaPersist _businessAreaPersist;
         private readonly IMapper _mapper;
+        
         public BusinessAreaService(IGeralPersist geralPersist, 
                                    IBusinessAreaPersist businessAreaPersist,
                                    IMapper mapper)
@@ -29,13 +30,14 @@ namespace EstruturaOrganizacional.Application
             try
             {
                 var businessarea = _mapper.Map<BusinessArea>(model);
+                businessarea.IsDeleted = false;
 
                 _geralPersist.Add<BusinessArea>(businessarea);
 
                 if(await _geralPersist.SaveChangesAsyncs())
                 {
                     var retorno = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(businessarea.id, false);
-
+                  
                     return _mapper.Map<BusinessAreaDto>(retorno);
                 }
 
