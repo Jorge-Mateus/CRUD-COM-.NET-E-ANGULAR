@@ -22,15 +22,13 @@ export class BusinessAreaDetalhesComponent implements OnInit {
     return this.form.controls;
   }
   constructor(private fb: FormBuilder,
-              private router: ActivatedRoute,
-              private businessService: BunissesAreaService,
-              private spinner: NgxSpinnerService,
-              private toastr: ToastrService) {
-                console.log("TESTE");
-              }
+    private router: ActivatedRoute,
+    private businessService: BunissesAreaService,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService) { }
 
 
-  public carregarUnidades(): void {
+    public carregarUnidades(): void {
       const businessIdParam = this.router.snapshot.paramMap.get('id');
 
       if (businessIdParam != null ){
@@ -46,7 +44,6 @@ export class BusinessAreaDetalhesComponent implements OnInit {
             this.form.patchValue(this.business);
           },
           error: any => {
-            console.log("error");
             this.spinner.hide();
             this.toastr.error('Erro ao tentar carregar unidade', 'Erro!');
             console.error(Error);
@@ -54,14 +51,14 @@ export class BusinessAreaDetalhesComponent implements OnInit {
           complete: () => this.spinner.hide(),
         });
       }
-  }
+    }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.validation();
       this.carregarUnidades();
-  }
+    }
 
-  public validation() : void{
+    public validation(): void{
       this.form = this.fb.group({
         descricao: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(55)]],
         sigla: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(3)]],
@@ -83,35 +80,19 @@ export class BusinessAreaDetalhesComponent implements OnInit {
 
       if (this.form.valid){
 
-        if (this.estadoSalvar === 'post'){
-
-          this.business.IsDeleted = false;
-
-          this.business = {...this.form.value};
-          this.businessService.postBunisses(this.business).subscribe(
-            () => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'),
-            (error: any) => {
-              console.log(error);
-              this.spinner.hide();
-              this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
-            },
-            () => this.spinner.hide()
-          );
-        }
-        else
-        {
-          this.business = {id: this.business.id, ...this.form.value};
-
-          this.businessService.putBunisses(this.business.id, this.business).subscribe(
-            () => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'),
-            (error: any) => {
-              console.log(error);
-              this.spinner.hide();
-              this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
-            },
-            () => this.spinner.hide()
+        this.business =  (this.estadoSalvar === 'post')
+                     ? {...this.form.value}
+                     : {id: this.business.id, ...this.form.value};
+        //this.business.IsDeleted = false; 
+        this.businessService[this.estadoSalvar](this.business).subscribe(
+          () => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'),
+          (error: any) => {
+            console.log(error);
+            this.spinner.hide();
+            this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
+          },
+          () => this.spinner.hide()
           );
         }
       }
     }
-  }

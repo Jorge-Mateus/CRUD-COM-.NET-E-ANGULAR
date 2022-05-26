@@ -24,12 +24,12 @@ public getBunissesAreaById(id: number): Observable<BusinessArea> {
   return this.http.get<BusinessArea>(`${this.baseUrl}/${id}`);
 }
 
-public postBunisses(businessArea: BusinessArea): Observable<BusinessArea> {
+public post(businessArea: BusinessArea): Observable<BusinessArea> {
   return this.http.post<BusinessArea>(this.baseUrl, businessArea);
 }
 
-public putBunisses(id: number, businessArea: BusinessArea): Observable<BusinessArea> {
-  return this.http.put<BusinessArea>(`${this.baseUrl}/${id}`, businessArea);
+public put(businessArea: BusinessArea): Observable<BusinessArea> {
+  return this.http.put<BusinessArea>(`${this.baseUrl}/${businessArea.id}`, businessArea);
 }
 
 public deleteBunisses(id: number): Observable<any> {

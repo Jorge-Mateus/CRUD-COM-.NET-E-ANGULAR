@@ -119,7 +119,7 @@ namespace EstruturaOrganizacional.API.Controllers
                 var result = await _businessAreaService.GetAllBusinessAreaByIdAsync(id);
 
                 if(result != null){
-                    result.IsDeleted = false;
+                    result.IsDeleted = true;
                    return await _businessAreaService.Delete(id, result)
                             ? Ok(new{message = "Deletado"})
                             : throw new Exception("Ocorreu o erro inesperado ao deletar");
