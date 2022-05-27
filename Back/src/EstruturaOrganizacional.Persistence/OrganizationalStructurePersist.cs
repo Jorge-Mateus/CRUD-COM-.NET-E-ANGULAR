@@ -24,50 +24,45 @@ namespace EstruturaOrganizacional.Persistence
         //ESTRUTURA ORGANIZACIONL
         public async Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalAnoAsync(bool includeEstrutura = false)
         {
-            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE
-            .Include(OE => OE.BusinessArea)
-            .Include(OE => OE.MarketArea)
-            .Include(OE => OE.OperatingUnit)
-            .Include(OE => OE.TchnologicalArea);
+            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;
+                                                /*.Include(OE => OE.BusinessArea)
+                                                .Include(OE => OE.MarketArea)
+                                                .Include(OE => OE.OperatingUnit)
+                                                .Include(OE => OE.TchnologicalArea);*/
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
+            query = query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false);
             
-            query = query.OrderBy(OE => OE.id);
             return await query.ToArrayAsync();
         }
-        public async Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalByAnoAsync(int ano, bool includeEstrutura)
+        public async Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalByAnoAsync(int ano, bool includeEstrutura = false)
         {
-            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE
-                .Include(OE => OE.BusinessArea)
+            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;
+               /* .Include(OE => OE.BusinessArea)
                 .Include(OE => OE.MarketArea)
                 .Include(OE => OE.OperatingUnit)
-                .Include(OE => OE.TchnologicalArea);
+                .Include(OE => OE.TchnologicalArea);*/
 
            /* if(includeEstrutura){
                 query = query.Include(oe => oe.)
             }*/
             
-            query = query.OrderBy(OE => OE.id)
-                         .Where(OE => OE.ano.Year == ano);
+            query =  query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false && OE.ano.Year == ano);
             return await query.ToArrayAsync();
         }
         
-        public async Task<OrganizationalStructure> GetAllOrganizationalStructureByIdAsync(int id)
+        public async Task<OrganizationalStructure> GetAllOrganizationalStructureByIdAsync(int id, bool includeEstrutura = false)
         {
-            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE
-                .Include(OE => OE.BusinessArea)
+            IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;              
+             /* .Include(OE => OE.BusinessArea)
                 .Include(OE => OE.MarketArea)
                 .Include(OE => OE.OperatingUnit)
-                .Include(OE => OE.TchnologicalArea);
+                .Include(OE => OE.TchnologicalArea);*/
 
            /* if(includeEstrutura){
                 query = query.Include(oe => oe.)
             }*/
             
-            query = query.OrderBy(OE => OE.id)
-                         .Where(OE => OE.id == id);
+            query = query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false && OE.id == id);
 
             return await query.FirstOrDefaultAsync();
         }

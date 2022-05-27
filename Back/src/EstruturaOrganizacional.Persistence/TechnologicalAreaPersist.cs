@@ -12,6 +12,7 @@ namespace EstruturaOrganizacional.Persistence
     public class TechnologicalAreaPersist : ITechnologicalAreaPersist
     {
         private readonly EstruturaOrganizacionalContext _context;
+
         public TechnologicalAreaPersist(EstruturaOrganizacionalContext context)
         {
             _context = context;
@@ -19,43 +20,32 @@ namespace EstruturaOrganizacional.Persistence
         }
 
         //AREA DE TECNOLOGIA
-        public async Task<TechnologicalArea[]> GetAllTechnologicalAreaBySiglaAsync(string descricao)
-        {
-            IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA
-                    .Include(t => t.descricao);
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(t => t.id);
+           public async Task<TechnologicalArea[]> GetAllTechnologicalAreaAsync( bool includeUnidade = false)
+        {
+              IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA;
+
+            query = query.AsNoTracking().OrderBy(t => t.id).Where(t => t.IsDeleted == false);
             return await query.ToArrayAsync();
         }
 
-        public async Task<TechnologicalArea[]> GetAllTechnologicalAreaAsync(string descricao)
+        public async Task<TechnologicalArea[]> GetAllTechnologicalAreaByDescricaoAsync(string descricao, bool includeUnidade = false)
         {
-              IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA
-                    .Include(t => t.descricao);
+            IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA;
+                   
+            query = query.AsNoTracking().OrderBy(t => t.id).Where(t => t.IsDeleted == false && t.descricao.ToLower().Contains(descricao.ToLower()));
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(t => t.id).Where(t => t.descricao.ToLower().Contains(descricao.ToLower()));
             return await query.ToArrayAsync();
         }
 
-        public async Task<TechnologicalArea> GetAllTechnologicalAreaByIdAsync(int id)
-        {
-            IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA
-                    .Include(t => t.descricao);
+     
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
+        public async Task<TechnologicalArea> GetAllTechnologicalAreaByIdAsync(int id, bool includeUnidade = false)
+        {
+            IQueryable<TechnologicalArea> query = _context.TECHNOLOGICALAREA;
             
-            query = query.OrderBy(t => t.id)
-                         .Where(t => t.id == id);
+            query = query.AsNoTracking().OrderBy(t => t.id).Where(t => t.IsDeleted == false && t.id == id);
+            
             return await query.FirstOrDefaultAsync();
         }
     }

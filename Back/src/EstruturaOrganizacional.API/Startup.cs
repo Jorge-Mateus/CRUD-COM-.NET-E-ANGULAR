@@ -47,6 +47,18 @@ namespace EstruturaOrganizacional.API
             services.AddScoped<IMarketAreaService, MarketAreaService>();
             services.AddScoped<IGeralPersist, GeralPersist>();//TALVEZ CAUSE CONFLITO
             services.AddScoped<IMarketAreaPersist, MarketAreaPersist>();
+
+            services.AddScoped<IOperatingUnitService, OperatingUnitsService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<IOperatingUnitPersist, OperatingUnitPersist>();
+
+            services.AddScoped<ITechnologicalAreaService, TechnologicalAreaService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<ITechnologicalAreaPersist, TechnologicalAreaPersist>();
+
+            services.AddScoped<IOrganizationalStructureService, OrganizationalStructureService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<IOrganizationalStructurePersist, OrganizationalStructurePersist>();
             
             services.AddSwaggerGen(c =>
             {

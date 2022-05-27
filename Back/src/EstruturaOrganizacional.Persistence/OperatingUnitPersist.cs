@@ -18,46 +18,34 @@ namespace EstruturaOrganizacional.Persistence
             _context = context;
             
         }
-       
+        
         // UNIDADE OPERACIONAL
-        public async Task<OperatingUnit[]> GetAllOperatingUnitBySiglaAsync(string sigla)
-        {
-            IQueryable<OperatingUnit> query = _context.OPERATINGUNIT
-                    .Include(u => u.descricao)
-                    .Include(u => u.codReduzido);
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(u => u.id);
+        public async Task<OperatingUnit[]> GetAllOperatingUnitAsync(bool includeUnidade = false)
+        {
+
+                IQueryable<OperatingUnit> query = _context.OPERATINGUNIT;
+                
+                query = query.AsNoTracking().OrderBy(u => u.id).Where(u => u.IsDeleted == false);
+           
+                return await query.ToArrayAsync();
+        }
+       
+        public async Task<OperatingUnit[]> GetAllOperatingUnitBySiglaAsync(string sigla,bool includeUnidade = false)
+        {
+            IQueryable<OperatingUnit> query = _context.OPERATINGUNIT;  
+
+            query = query.AsNoTracking().OrderBy(u => u.id).Where(u => u.IsDeleted == false &&
+                                                   u.sigla.ToLower().Contains(sigla.ToLower()));
             return await query.ToArrayAsync();
         }
-        public async Task<OperatingUnit[]> GetAllOperatingUnitAsync(string descricao)
+     
+        public async Task<OperatingUnit> GetAllOperatingUnitByIdAsync(int id, bool includeUnidade = false)
         {
-                IQueryable<OperatingUnit> query = _context.OPERATINGUNIT
-                    .Include(u => u.descricao)
-                    .Include(u => u.codReduzido);
-
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
+            IQueryable<OperatingUnit> query = _context.OPERATINGUNIT;
+           
+            query =query.AsNoTracking().OrderBy(u => u.id).Where(u => u.IsDeleted == false && u.id == id);
             
-            query = query.OrderBy(u => u.id).Where(am => am.descricao.ToLower().Contains(descricao.ToLower()));
-            return await query.ToArrayAsync();
-        }
-        public async Task<OperatingUnit> GetAllOperatingUnitByIdAsync(int OperatingUnitsID)
-        {
-            IQueryable<OperatingUnit> query = _context.OPERATINGUNIT
-                    .Include(u => u.descricao)
-                    .Include(u => u.codReduzido);
-
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
-            query = query.OrderBy(u => u.id)
-                         .Where(u => u.id == OperatingUnitsID);
             return await query.FirstOrDefaultAsync();
         }
     }

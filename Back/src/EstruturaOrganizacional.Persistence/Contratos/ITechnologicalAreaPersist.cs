@@ -9,8 +9,8 @@ namespace EstruturaOrganizacional.Persistence
     public interface ITechnologicalAreaPersist
     {
         //Unidade opercional
-        Task<TechnologicalArea[]> GetAllTechnologicalAreaBySiglaAsync(string descricao);
-        Task<TechnologicalArea[]> GetAllTechnologicalAreaAsync(string descricao);
-        Task<TechnologicalArea> GetAllTechnologicalAreaByIdAsync(int id);
+        Task<TechnologicalArea[]> GetAllTechnologicalAreaAsync(bool includeUnidade = false);
+        Task<TechnologicalArea[]> GetAllTechnologicalAreaByDescricaoAsync(string descricao, bool includeUnidade = false);
+        Task<TechnologicalArea> GetAllTechnologicalAreaByIdAsync(int id, bool includeUnidade = false);
     }
 }

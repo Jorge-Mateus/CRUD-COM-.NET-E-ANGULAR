@@ -11,7 +11,7 @@ namespace EstruturaOrganizacional.Persistence.Contratos
         //Estrutura Organizacional
         Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalByAnoAsync(int ano, bool includeEstrutura); //todo por ano
         Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalAnoAsync(bool includeEstrutura );
-        Task<OrganizationalStructure> GetAllOrganizationalStructureByIdAsync(int id);
+        Task<OrganizationalStructure> GetAllOrganizationalStructureByIdAsync(int id, bool includeEstrutura = false);
 
     }
 }

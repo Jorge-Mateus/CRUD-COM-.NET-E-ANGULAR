@@ -10,8 +10,8 @@ namespace EstruturaOrganizacional.Persistence.Contratos
     {
         
         //Unidade opercional
-        Task<OperatingUnit[]> GetAllOperatingUnitBySiglaAsync(string sigla);
-        Task<OperatingUnit[]> GetAllOperatingUnitAsync(string descricao);
-        Task<OperatingUnit> GetAllOperatingUnitByIdAsync(int OperatingUnitsID);
+        Task<OperatingUnit[]> GetAllOperatingUnitBySiglaAsync(string sigla, bool includeUnidade = false);
+        Task<OperatingUnit[]> GetAllOperatingUnitAsync(bool includeUnidade = false);
+        Task<OperatingUnit> GetAllOperatingUnitByIdAsync(int id, bool includeUnidade = false);
     }
 }
