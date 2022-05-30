@@ -82,6 +82,10 @@ namespace EstruturaOrganizacional.API.Controllers
             try
             {
                 var businessArea = await _businessAreaService.AddBusinessArea(model);
+
+                if(businessArea.sigla == "null" || businessArea.sigla == "" ||
+                   businessArea.descricao == "null" || businessArea.descricao == "" || 
+                   businessArea.codEMS == "null" || businessArea.codEMS == "") return NotFound("Não pode ser escrito null ou deixar em vazio, preencha corretamente!");
                 
                 if(businessArea == null) return NoContent(); 
 

@@ -83,7 +83,10 @@ namespace EstruturaOrganizacional.API.Controllers
             try
             {
                 var operating = await _operatingUnitsService.AddOperatingUnit(model);
-                
+                    
+                if(operating.sigla == "null" || operating.sigla == "" ||
+                   operating.descricao == "null" || operating.descricao == "" ||
+                   operating.codReduzido == "null" || operating.codReduzido == "")return NotFound("Não pode ser escrito null ou deixar em vazio, preencha corretamente!");         
                 if(operating == null) return NoContent(); 
 
                 return Ok(operating);

@@ -31,6 +31,7 @@ namespace EstruturaOrganizacional.Application
             try
             {
                 var organization = _mapper.Map<OrganizationalStructure>(model);
+                
                 organization.IsDeleted = false;
 
                 _geralPersist.Add<OrganizationalStructure>(organization);

@@ -33,13 +33,14 @@ namespace EstruturaOrganizacional.Application
                 businessarea.IsDeleted = false;
 
                 _geralPersist.Add<BusinessArea>(businessarea);
-
+   
                 if(await _geralPersist.SaveChangesAsyncs())
-                {
+                { 
                     var retorno = await _businessAreaPersist.GetAllBusinessAreaByIdAsync(businessarea.id, false);
                   
                     return _mapper.Map<BusinessAreaDto>(retorno);
                 }
+                
 
                 return null;
             }

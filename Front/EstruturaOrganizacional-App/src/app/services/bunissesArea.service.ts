@@ -8,7 +8,7 @@ import { BusinessArea } from '../model/BusinessArea';
 })
 export class BunissesAreaService {
 
-  baseUrl = 'https://localhost:5001/api/BusinessAreas'
+  baseUrl = 'https://localhost:5001/api/BusinessAreas';
 
 constructor(private http: HttpClient) { }
 

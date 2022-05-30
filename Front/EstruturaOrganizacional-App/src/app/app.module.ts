@@ -21,10 +21,13 @@ import { NavComponent } from './shared/Nav/Nav.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BunissesAreaService } from './services/bunissesArea.service';
-import { MarketAreaComponent } from './components/market-area/market-area.component';
+import { MarketAreaService } from './services/marketArea.service';
+import { OperitingUnitsService } from './services/operitingUnits.service';
+import { TechnologicalAreaService } from './services/technologicalArea.service';
 
 import { DateFormatPipe } from './helpers/DateFormat.pipe';
 
+import { MarketAreaComponent } from './components/market-area/market-area.component';
 import { TechnologicalareaComponent } from './components/technologicalarea/technologicalarea.component';
 import { OperitingunitsComponent } from './components/operitingunits/operitingunits.component';
 import { OrganationalstructureComponent } from './components/organationalstructure/organationalstructure.component';
@@ -37,6 +40,12 @@ import { BusinessAreaListaComponent } from './components/business-area/business-
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { MarketAreaListaComponent } from './components/market-area/market-area-lista/market-area-lista.component';
+import { MarketAreaDetalhesComponent } from './components/market-area/market-area-detalhes/market-area-detalhes.component';
+import { OperitingunitsaListaComponent } from './components/operitingunits/operitingunits-lista/operitingunitsa-lista.component';
+import { OperitingunitsDetalhesComponent } from './components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component';
+import { TechnologicalareaListaComponent } from './components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component';
+import { TechnologicalareaDetalhesComponent } from './components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component';
 
 
 
@@ -57,7 +66,13 @@ import { RegistrationComponent } from './components/user/registration/registrati
     BusinessAreaListaComponent,
     UserComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MarketAreaListaComponent,
+    MarketAreaDetalhesComponent,
+    OperitingunitsaListaComponent,
+    OperitingunitsDetalhesComponent,
+    TechnologicalareaListaComponent,
+    TechnologicalareaDetalhesComponent
    ],
   imports: [
     BrowserModule,
@@ -75,7 +90,10 @@ import { RegistrationComponent } from './components/user/registration/registrati
     NgxSpinnerModule
   ],
   providers: [
-    BunissesAreaService
+    BunissesAreaService,
+    MarketAreaService,
+    OperitingUnitsService,
+    TechnologicalAreaService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

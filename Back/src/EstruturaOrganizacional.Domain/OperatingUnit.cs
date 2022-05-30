@@ -12,5 +12,7 @@ namespace EstruturaOrganizacional.Domain
        public virtual string descricao { get; set; }
        public virtual string codReduzido { get; set; }
        public virtual bool IsDeleted { get; set; }
+
+       
     }
 }

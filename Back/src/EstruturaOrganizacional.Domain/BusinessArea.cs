@@ -13,5 +13,7 @@ namespace EstruturaOrganizacional.Domain
         public virtual string codEMS { get; set; }
         public virtual bool IsDeleted { get; set; }
 
+
+
     }
 }

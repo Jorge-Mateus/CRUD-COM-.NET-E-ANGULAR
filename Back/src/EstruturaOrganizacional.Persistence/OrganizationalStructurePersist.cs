@@ -25,11 +25,7 @@ namespace EstruturaOrganizacional.Persistence
         public async Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalAnoAsync(bool includeEstrutura = false)
         {
             IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;
-                                                /*.Include(OE => OE.BusinessArea)
-                                                .Include(OE => OE.MarketArea)
-                                                .Include(OE => OE.OperatingUnit)
-                                                .Include(OE => OE.TchnologicalArea);*/
-
+                                                
             query = query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false);
             
             return await query.ToArrayAsync();
@@ -37,15 +33,7 @@ namespace EstruturaOrganizacional.Persistence
         public async Task<OrganizationalStructure[]> GetAllEstruturaOrganizacionalByAnoAsync(int ano, bool includeEstrutura = false)
         {
             IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;
-               /* .Include(OE => OE.BusinessArea)
-                .Include(OE => OE.MarketArea)
-                .Include(OE => OE.OperatingUnit)
-                .Include(OE => OE.TchnologicalArea);*/
 
-           /* if(includeEstrutura){
-                query = query.Include(oe => oe.)
-            }*/
-            
             query =  query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false && OE.ano.Year == ano);
             return await query.ToArrayAsync();
         }

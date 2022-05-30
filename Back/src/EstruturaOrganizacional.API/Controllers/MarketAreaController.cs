@@ -83,6 +83,8 @@ namespace EstruturaOrganizacional.API.Controllers
             {
                 var marketArea = await _marketAreaService.AddMarketArea(model);
                 
+                if(marketArea.descricao == "null" || marketArea.descricao == "") return NotFound("Não pode ser escrito null ou deixar em vazio, preencha corretamente!");
+
                 if(marketArea == null) return NoContent(); 
 
                 return Ok(marketArea);

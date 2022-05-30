@@ -13,7 +13,7 @@ namespace EstruturaOrganizacional.Application.Dtos
         [Required(ErrorMessage ="O campo {0} é obrigatório o preenchimento"),
          MinLength(3, ErrorMessage ="A {0} deve ter no mínimo 4 caracteres"),
          MaxLength(50, ErrorMessage ="A {0} deve ter no máximo 50 caracteres")]
-        public virtual string sigla { get; set; }
+        public virtual string? sigla { get; set; }
         
         [Required(ErrorMessage ="O campo {0} é obrigatório o preenchimento")]
         public virtual string descricao { get; set; }
