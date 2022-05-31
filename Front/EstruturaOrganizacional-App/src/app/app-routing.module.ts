@@ -46,6 +46,7 @@ const routes: Routes = [
       {path: 'lista', component: MarketAreaListaComponent},
     ]
   },
+  { path: 'unidadeoperacional', redirectTo: 'unidadeoperacional/lista'},
   { path: 'unidadeoperacional', component: OperitingunitsComponent,
     children: [
       {path: 'detalhe/:id', component: OperitingunitsDetalhesComponent},

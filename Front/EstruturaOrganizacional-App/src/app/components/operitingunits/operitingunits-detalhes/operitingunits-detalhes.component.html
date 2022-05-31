@@ -1,1 +1,65 @@
-<p>operitingunits-detalhes works!</p>
+<div class="card rounded shadow-sm" [formGroup]="form">
+  <form [formGroup]="form">
+    <div class="p-3">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>Descrição</label>
+
+          <input type="text" class="form-control" [ngClass]="cssValidador(f.descricao)"
+          formControlName="descricao" placeholder="Informe a unidade de negocio">
+          <div *ngIf="f.descricao.errors?.required" class="invalid-feedback">
+            Descrição é obrigatória o preenchimento!
+          </div>
+          <div *ngIf="f.descricao.errors?.minlength" class="invalid-feedback">
+            Descrição minima é de 4 caracteres!
+          </div>
+          <div *ngIf="f.descricao.errors?.maxlength" class="invalid-feedback">
+            Descrição maxima é de 50 caracteres!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-8">
+          <label>Sigla</label>
+          <input type="text" class="form-control"  [ngClass]="cssValidador(f.sigla)"
+          formControlName="sigla" placeholder="">
+          <div  *ngIf="f.sigla.errors?.required" class="invalid-feedback">
+            Sigla é obrigatória o preenchimento!
+          </div>
+          <div  *ngIf="f.sigla.errors?.maxlength" class="invalid-feedback">
+            Tamanho maximo é de 10 caracteres.
+          </div>
+          <div *ngIf="f.sigla.errors?.minlength" class="invalid-feedback">
+            Descrição minima é de 3 caracteres!
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>Código Reduzido</label>
+          <input type="text" class="form-control"  [ngClass]="cssValidador(f.codReduzido)"
+          formControlName="codReduzido" placeholder="">
+          <div  *ngIf="f.codReduzido.errors?.required" class="invalid-feedback">
+            Código é obrigatória o preenchimento!
+          </div>
+          <div  *ngIf="f.codReduzido.errors?.maxlength" class="invalid-feedback">
+            Tamanho maximo é de 10 caracteres.
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()" routerLink="/unidadeoperacional/lista">
+          Cancelar Alteração
+        </button>
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">
+          <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+          Salvar unidade
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

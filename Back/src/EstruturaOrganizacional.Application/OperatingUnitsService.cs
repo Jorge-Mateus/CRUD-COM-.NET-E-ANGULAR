@@ -62,7 +62,7 @@ namespace EstruturaOrganizacional.Application
 
                 _mapper.Map(model, operating);
 
-              //  _geralPersist.Update<OperatingUnit>(operating);
+               _geralPersist.Update<OperatingUnit>(operating);
 
                 if(await _geralPersist.SaveChangesAsyncs()){
 

@@ -33,7 +33,7 @@ export class BusinessAreaListaComponent implements OnInit {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.businessareas.filter(
       (businessarea: any) => businessarea.sigla.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
-      businessarea.codReduzido.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+      businessarea.codEMS.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     );
   }
 
