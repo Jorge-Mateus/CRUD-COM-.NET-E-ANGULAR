@@ -83,9 +83,8 @@ namespace EstruturaOrganizacional.API.Controllers
                 var tecnhological = await _tecnhologicalAreaService.AddTechnologicalArea(model);
                 
                 if(tecnhological.descricao == "null" || tecnhological.descricao == "" ||
-                   tecnhological.unidadeVirtual == "null" || tecnhological.unidadeVirtual == "" ||
-                   )
-                   return("Não pode ser escrito null ou deixar em vazio, preencha corretamente!");
+                   tecnhological.unidadeVirtual == "null" || tecnhological.unidadeVirtual == "")
+                   return NotFound("Não pode ser escrito null ou deixar em vazio, preencha corretamente!");
 
                 if(tecnhological == null) return NoContent(); 
 

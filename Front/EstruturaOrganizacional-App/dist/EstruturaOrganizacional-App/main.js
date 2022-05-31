@@ -115,11 +115,11 @@ class BunissesAreaService {
     getBunissesAreaById(id) {
         return this.http.get(`${this.baseUrl}/${id}`);
     }
-    postBunisses(businessArea) {
+    post(businessArea) {
         return this.http.post(this.baseUrl, businessArea);
     }
-    putBunisses(id, businessArea) {
-        return this.http.put(`${this.baseUrl}/${id}`, businessArea);
+    put(businessArea) {
+        return this.http.put(`${this.baseUrl}/${businessArea.id}`, businessArea);
     }
     deleteBunisses(id) {
         return this.http.delete(`${this.baseUrl}/${id}`);
@@ -127,6 +127,238 @@ class BunissesAreaService {
 }
 BunissesAreaService.ɵfac = function BunissesAreaService_Factory(t) { return new (t || BunissesAreaService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 BunissesAreaService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: BunissesAreaService, factory: BunissesAreaService.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
+/***/ "F6uJ":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/components/market-area/market-area-lista/market-area-lista.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: MarketAreaListaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarketAreaListaComponent", function() { return MarketAreaListaComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _app_services_marketArea_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @app/services/marketArea.service */ "hMua");
+/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap/modal */ "K3ix");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-toastr */ "5eHb");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-bootstrap/tooltip */ "Mfq2");
+
+
+
+
+
+
+
+
+
+function MarketAreaListaComponent_tbody_17_tr_1_Template(rf, ctx) { if (rf & 1) {
+    const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketAreaListaComponent_tbody_17_tr_1_Template_tr_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const marketarea_r5 = ctx.$implicit; const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r6.detalheNegocio(marketarea_r5.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketAreaListaComponent_tbody_17_tr_1_Template_button_click_6_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const marketarea_r5 = ctx.$implicit; const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](20); return ctx_r8.openModal($event, _r2, marketarea_r5.id); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "i", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const marketarea_r5 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](marketarea_r5.id);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](marketarea_r5.descricao);
+} }
+function MarketAreaListaComponent_tbody_17_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, MarketAreaListaComponent_tbody_17_tr_1_Template, 8, 2, "tr", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.marketareafiltrados);
+} }
+function MarketAreaListaComponent_tfoot_18_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tfoot");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h4");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Nenhuma Area de Mercado encontrada");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function MarketAreaListaComponent_ng_template_19_Template(rf, ctx) { if (rf & 1) {
+    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Tem certeza que deseja deletar este negocio?");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketAreaListaComponent_ng_template_19_Template_button_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.confirm(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Sim");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MarketAreaListaComponent_ng_template_19_Template_button_click_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r11.decline(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "N\u00E3o");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class MarketAreaListaComponent {
+    constructor(marketAreaService, modalService, toastr, spinner, router) {
+        this.marketAreaService = marketAreaService;
+        this.modalService = modalService;
+        this.toastr = toastr;
+        this.spinner = spinner;
+        this.router = router;
+        this.modalRef = {};
+        this.marketarea = [];
+        this.marketareafiltrados = [];
+        this.filtroListado = '';
+        this.marketareaId = 0;
+        this.marketareaIsDeleted = false;
+    }
+    get filtroLista() {
+        return this.filtroListado;
+    }
+    set filtroLista(value) {
+        this.filtroListado = value;
+        this.marketareafiltrados = this.filtroLista ? this.filtrarUnidades(this.filtroLista) : this.marketarea;
+    }
+    filtrarUnidades(filtrarPor) {
+        filtrarPor = filtrarPor.toLocaleLowerCase();
+        return this.marketarea.filter((marketarea) => marketarea.descricao.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
+    }
+    ngOnInit() {
+        this.getCarregarMarketArea();
+        this.spinner.show();
+        setTimeout(() => {
+            /** spinner ends after 5 seconds */
+            this.spinner.hide();
+        }, 5000);
+    }
+    getCarregarMarketArea() {
+        this.marketAreaService.getMarketArea().subscribe((marketAreasResp) => {
+            this.marketarea = marketAreasResp;
+            this.marketareafiltrados = this.marketarea;
+        }, error => console.log(error));
+    }
+    openModal(event, template, marketareaId, marketareaIsDeleted) {
+        event.stopPropagation();
+        this.marketareaId = marketareaId;
+        this.marketareaIsDeleted = marketareaIsDeleted;
+        this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    }
+    confirm() {
+        this.modalRef.hide();
+        this.spinner.show();
+        this.marketAreaService.deleteMarket(this.marketareaId).subscribe((result) => {
+            if (result = 'Ok') {
+                console.log(result);
+                this.toastr.success('A area de mercado foi deletada com sucesso', 'Deletado');
+                this.spinner.hide();
+                this.getCarregarMarketArea();
+            }
+        }, (error) => {
+            this.toastr.error('Erro ao tentar deletar a area de mercado');
+            this.spinner.hide();
+            console.error(error);
+        }, () => this.spinner.hide());
+    }
+    decline() {
+        this.modalRef.hide();
+    }
+    detalheNegocio(id) {
+        this.router.navigate([`marketarea/detalhe/${id}`]);
+    }
+}
+MarketAreaListaComponent.ɵfac = function MarketAreaListaComponent_Factory(t) { return new (t || MarketAreaListaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_app_services_marketArea_service__WEBPACK_IMPORTED_MODULE_1__["MarketAreaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_2__["BsModalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_3__["ToastrService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"])); };
+MarketAreaListaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MarketAreaListaComponent, selectors: [["app-market-area-lista"]], decls: 21, vars: 3, consts: [[1, "card", "rounded", "shadow-sm", "p-3"], [1, "input-group", "flex-nowrap", 2, "margin-bottom", "2%"], ["id", "addon-wrapping", 1, "input-group-text"], ["xmlns", "http://www.w3.org/2000/svg", "width", "16", "height", "16", "fill", "currentColor", "viewBox", "0 0 16 16", 1, "bi", "bi-search"], ["d", "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"], ["type", "text", "placeholder", "Pesquise area de negocio", "aria-label", "Username", "aria-describedby", "addon-wrapping", 1, "form-control", 3, "ngModel", "ngModelChange"], ["routerLink", "/areademercado/detalhes", 1, "d-flex", "btn", "btn-outline-primary"], [1, "fa", "fa-plus-circle", "my-1"], [1, "ml-1", "d-none", "d-sm-block"], [1, "table", "table-striped", "table-hover"], [1, "thead-dark"], [2, "text-align", "center", "vertical-align", "middle !important"], [4, "ngIf"], ["template", ""], ["style", "cursor: pointer;", 3, "click", 4, "ngFor", "ngForOf"], [2, "cursor", "pointer", 3, "click"], ["type", "button", "tooltip", "Excluir", 1, "btn", "btn-danger", "btn-sm", 3, "click"], [1, "fa", "fa-trash"], ["colspan", "6", 1, "text-center"], [1, "modal-body", "text-center"], ["type", "button", 1, "btn", "btn-default", 3, "click"], ["type", "button", 1, "btn", "btn-primary", 3, "click"]], template: function MarketAreaListaComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "svg", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "path", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceHTML"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function MarketAreaListaComponent_Template_input_ngModelChange_5_listener($event) { return ctx.filtroLista = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "i", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Novo");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "table", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "thead", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "th", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "#");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "th", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Descri\u00E7\u00E3o");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, MarketAreaListaComponent_tbody_17_Template, 2, 1, "tbody", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, MarketAreaListaComponent_tfoot_18_Template, 5, 0, "tfoot", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](19, MarketAreaListaComponent_ng_template_19_Template, 7, 0, "ng-template", null, 13, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.filtroLista);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.marketarea && ctx.marketarea.length);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.marketarea.length);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgModel"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_8__["TooltipDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXJrZXQtYXJlYS1saXN0YS5jb21wb25lbnQuc2NzcyJ9 */"] });
+
+
+/***/ }),
+
+/***/ "I6K1":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/components/operitingunits/operitingunits-lista/operitingunitsa-lista.component.ts ***!
+  \***************************************************************************************************/
+/*! exports provided: OperitingunitsaListaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperitingunitsaListaComponent", function() { return OperitingunitsaListaComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class OperitingunitsaListaComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+OperitingunitsaListaComponent.ɵfac = function OperitingunitsaListaComponent_Factory(t) { return new (t || OperitingunitsaListaComponent)(); };
+OperitingunitsaListaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: OperitingunitsaListaComponent, selectors: [["app-operitingunitsa-lista"]], decls: 2, vars: 0, template: function OperitingunitsaListaComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "operitingunitsa-lista works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvcGVyaXRpbmd1bml0c2EtbGlzdGEuY29tcG9uZW50LnNjc3MifQ== */"] });
 
 
 /***/ }),
@@ -364,6 +596,159 @@ RegistrationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵde
 
 /***/ }),
 
+/***/ "LFd4":
+/*!***********************************************************************************************!*\
+  !*** ./src/app/components/market-area/market-area-detalhes/market-area-detalhes.component.ts ***!
+  \***********************************************************************************************/
+/*! exports provided: MarketAreaDetalhesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarketAreaDetalhesComponent", function() { return MarketAreaDetalhesComponent; });
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _app_services_marketArea_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/services/marketArea.service */ "hMua");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-spinner */ "JqCM");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "5eHb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
+
+
+
+
+
+function MarketAreaDetalhesComponent_div_8_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " Descri\u00E7\u00E3o \u00E9 obrigat\u00F3ria o preenchimento! ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function MarketAreaDetalhesComponent_div_9_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " Descri\u00E7\u00E3o minima \u00E9 de 4 caracteres! ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function MarketAreaDetalhesComponent_div_10_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, " Descri\u00E7\u00E3o maxima \u00E9 de 50 caracteres! ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+class MarketAreaDetalhesComponent {
+    constructor(fb, router, marketService, spinner, toastr) {
+        this.fb = fb;
+        this.router = router;
+        this.marketService = marketService;
+        this.spinner = spinner;
+        this.toastr = toastr;
+        this.market = {};
+        this.estadoSalvar = 'post';
+    }
+    get f() {
+        return this.form.controls;
+    }
+    carregarMercados() {
+        const marketIdParam = this.router.snapshot.paramMap.get('id');
+        if (marketIdParam != null) {
+            this.spinner.show();
+            this.estadoSalvar = 'put';
+            this.marketService.getMarketAreaById(+marketIdParam).subscribe({
+                next: (market) => {
+                    console.log(market);
+                    this.market = Object.assign({}, market);
+                    this.form.patchValue(this.market);
+                },
+                error: any => {
+                    this.spinner.hide();
+                    this.toastr.error('Erro ao tentar carregar área de mercado', 'Erro!');
+                    console.error(Error);
+                },
+                complete: () => this.spinner.hide(),
+            });
+        }
+    }
+    ngOnInit() {
+        this.validation();
+        this.carregarMercados();
+    }
+    validation() {
+        this.form = this.fb.group({
+            descricao: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].minLength(4), _angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].maxLength(55)]],
+        });
+    }
+    cssValidador(campoForm) {
+        return { 'is-invalid': campoForm.errors && campoForm.touched };
+    }
+    resetForm() {
+        this.form.reset();
+    }
+    salvarAlteracao() {
+        this.spinner.show();
+        if (this.form.valid) {
+            this.market = (this.estadoSalvar === 'post')
+                ? Object.assign({}, this.form.value) : Object.assign({ id: this.market.id }, this.form.value);
+            this.marketService[this.estadoSalvar](this.market).subscribe(() => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'), (error) => {
+                console.log(error);
+                this.spinner.hide();
+                this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
+            }, () => this.spinner.hide());
+        }
+    }
+}
+MarketAreaDetalhesComponent.ɵfac = function MarketAreaDetalhesComponent_Factory(t) { return new (t || MarketAreaDetalhesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_app_services_marketArea_service__WEBPACK_IMPORTED_MODULE_3__["MarketAreaService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ngx_spinner__WEBPACK_IMPORTED_MODULE_4__["NgxSpinnerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"])); };
+MarketAreaDetalhesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MarketAreaDetalhesComponent, selectors: [["app-market-area-detalhes"]], decls: 19, vars: 7, consts: [[1, "card", "rounded", "shadow-sm", 3, "formGroup"], [3, "formGroup"], [1, "p-3"], [1, "form-row"], [1, "form-group", "col-md-12"], ["type", "text", "formControlName", "descricao", "placeholder", "Informe a unidade de negocio", 1, "form-control", 3, "ngClass"], ["class", "invalid-feedback", 4, "ngIf"], [1, "form-group", "col-md-8"], [1, "card-footer"], [1, "d-flex"], [1, "btn", "btn-outline-secondary", "mr-auto", "border", 3, "click"], [1, "btn", "btn-success", 3, "disabled"], [1, "invalid-feedback"]], template: function MarketAreaDetalhesComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "form", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "Descri\u00E7\u00E3o");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, MarketAreaDetalhesComponent_div_8_Template, 2, 0, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, MarketAreaDetalhesComponent_div_9_Template, 2, 0, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](10, MarketAreaDetalhesComponent_div_10_Template, 2, 0, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function MarketAreaDetalhesComponent_Template_button_click_15_listener() { return ctx.resetForm(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, " Cancelar Altera\u00E7\u00E3o ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "button", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](18, " Salvar unidade ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.form);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.form);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", ctx.cssValidador(ctx.f.descricao));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.f.descricao.errors == null ? null : ctx.f.descricao.errors.required);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.f.descricao.errors == null ? null : ctx.f.descricao.errors.minlength);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.f.descricao.errors == null ? null : ctx.f.descricao.errors.maxlength);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx.form.valid);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXJrZXQtYXJlYS1kZXRhbGhlcy5jb21wb25lbnQuc2NzcyJ9 */"] });
+
+
+/***/ }),
+
 /***/ "Lquv":
 /*!*************************************************************!*\
   !*** ./src/app/components/dashboard/dashboard.component.ts ***!
@@ -405,6 +790,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarketAreaComponent", function() { return MarketAreaComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../shared/titulo/titulo.component */ "UOjp");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
 
 
 class MarketAreaComponent {
@@ -413,11 +800,14 @@ class MarketAreaComponent {
     }
 }
 MarketAreaComponent.ɵfac = function MarketAreaComponent_Factory(t) { return new (t || MarketAreaComponent)(); };
-MarketAreaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MarketAreaComponent, selectors: [["app-market-area"]], decls: 1, vars: 1, consts: [[3, "titulo"]], template: function MarketAreaComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-titulo", 0);
+MarketAreaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MarketAreaComponent, selectors: [["app-market-area"]], decls: 3, vars: 1, consts: [[3, "titulo"]], template: function MarketAreaComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-titulo", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "\n[subtitulo]=\"'Verifique e cadastre as \u00E1reas de mercado'\"\n[botaoLista]=\"true\">");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "router-outlet");
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("titulo", "\u00C1rea de Mercado");
-    } }, directives: [_shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_1__["TituloComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXJrZXQtYXJlYS5jb21wb25lbnQuc2NzcyJ9 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("titulo", "AreaDeMercado");
+    } }, directives: [_shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_1__["TituloComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYXJrZXQtYXJlYS5jb21wb25lbnQuc2NzcyJ9 */"] });
 
 
 /***/ }),
@@ -450,6 +840,33 @@ class ValidatorField {
         };
     }
 }
+
+
+/***/ }),
+
+/***/ "SjAz":
+/*!***********************************************************************************************************!*\
+  !*** ./src/app/components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component.ts ***!
+  \***********************************************************************************************************/
+/*! exports provided: TechnologicalareaListaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TechnologicalareaListaComponent", function() { return TechnologicalareaListaComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class TechnologicalareaListaComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+TechnologicalareaListaComponent.ɵfac = function TechnologicalareaListaComponent_Factory(t) { return new (t || TechnologicalareaListaComponent)(); };
+TechnologicalareaListaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TechnologicalareaListaComponent, selectors: [["app-technologicalarea-lista"]], decls: 2, vars: 0, template: function TechnologicalareaListaComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "technologicalarea-lista works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0ZWNobm9sb2dpY2FsYXJlYS1saXN0YS5jb21wb25lbnQuc2NzcyJ9 */"] });
 
 
 /***/ }),
@@ -624,6 +1041,33 @@ const ɵDateFormatPipe_BaseFactory = /*@__PURE__*/ _angular_core__WEBPACK_IMPORT
 
 /***/ }),
 
+/***/ "YpOV":
+/*!*****************************************************************************************************************!*\
+  !*** ./src/app/components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component.ts ***!
+  \*****************************************************************************************************************/
+/*! exports provided: TechnologicalareaDetalhesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TechnologicalareaDetalhesComponent", function() { return TechnologicalareaDetalhesComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class TechnologicalareaDetalhesComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+TechnologicalareaDetalhesComponent.ɵfac = function TechnologicalareaDetalhesComponent_Factory(t) { return new (t || TechnologicalareaDetalhesComponent)(); };
+TechnologicalareaDetalhesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TechnologicalareaDetalhesComponent, selectors: [["app-technologicalarea-detalhes"]], decls: 2, vars: 0, template: function TechnologicalareaDetalhesComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "technologicalarea-detalhes works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0ZWNobm9sb2dpY2FsYXJlYS1kZXRhbGhlcy5jb21wb25lbnQuc2NzcyJ9 */"] });
+
+
+/***/ }),
+
 /***/ "ZAI4":
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
@@ -649,21 +1093,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_Nav_Nav_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/Nav/Nav.component */ "kEKV");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
 /* harmony import */ var _services_bunissesArea_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/bunissesArea.service */ "Cy4O");
-/* harmony import */ var _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/market-area/market-area.component */ "MgEy");
-/* harmony import */ var _helpers_DateFormat_pipe__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./helpers/DateFormat.pipe */ "W9U+");
-/* harmony import */ var _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea.component */ "Vv2c");
-/* harmony import */ var _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/operitingunits/operitingunits.component */ "mRjm");
-/* harmony import */ var _components_organationalstructure_organationalstructure_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/organationalstructure/organationalstructure.component */ "+RiF");
-/* harmony import */ var _components_business_area_business_area_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/business-area/business-area.component */ "JUna");
-/* harmony import */ var _shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./shared/titulo/titulo.component */ "UOjp");
-/* harmony import */ var _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/dashboard/dashboard.component */ "Lquv");
-/* harmony import */ var _components_user_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/user/perfil/perfil.component */ "vSSG");
-/* harmony import */ var _components_business_area_business_area_detalhes_business_area_detalhes_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/business-area/business-area-detalhes/business-area-detalhes.component */ "cZlc");
-/* harmony import */ var _components_business_area_business_area_lista_business_area_lista_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/business-area/business-area-lista/business-area-lista.component */ "e39s");
-/* harmony import */ var _components_user_user_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/user/user.component */ "ytin");
-/* harmony import */ var _components_user_login_login_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/user/login/login.component */ "hzBV");
-/* harmony import */ var _components_user_registration_registration_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/user/registration/registration.component */ "Jjgw");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_marketArea_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/marketArea.service */ "hMua");
+/* harmony import */ var _services_operitingUnits_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/operitingUnits.service */ "o1hQ");
+/* harmony import */ var _services_technologicalArea_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/technologicalArea.service */ "axIW");
+/* harmony import */ var _helpers_DateFormat_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./helpers/DateFormat.pipe */ "W9U+");
+/* harmony import */ var _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/market-area/market-area.component */ "MgEy");
+/* harmony import */ var _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea.component */ "Vv2c");
+/* harmony import */ var _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/operitingunits/operitingunits.component */ "mRjm");
+/* harmony import */ var _components_organationalstructure_organationalstructure_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/organationalstructure/organationalstructure.component */ "+RiF");
+/* harmony import */ var _components_business_area_business_area_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/business-area/business-area.component */ "JUna");
+/* harmony import */ var _shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./shared/titulo/titulo.component */ "UOjp");
+/* harmony import */ var _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/dashboard/dashboard.component */ "Lquv");
+/* harmony import */ var _components_user_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/user/perfil/perfil.component */ "vSSG");
+/* harmony import */ var _components_business_area_business_area_detalhes_business_area_detalhes_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/business-area/business-area-detalhes/business-area-detalhes.component */ "cZlc");
+/* harmony import */ var _components_business_area_business_area_lista_business_area_lista_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/business-area/business-area-lista/business-area-lista.component */ "e39s");
+/* harmony import */ var _components_user_user_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/user/user.component */ "ytin");
+/* harmony import */ var _components_user_login_login_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/user/login/login.component */ "hzBV");
+/* harmony import */ var _components_user_registration_registration_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/user/registration/registration.component */ "Jjgw");
+/* harmony import */ var _components_market_area_market_area_lista_market_area_lista_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/market-area/market-area-lista/market-area-lista.component */ "F6uJ");
+/* harmony import */ var _components_market_area_market_area_detalhes_market_area_detalhes_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/market-area/market-area-detalhes/market-area-detalhes.component */ "LFd4");
+/* harmony import */ var _components_operitingunits_operitingunits_lista_operitingunitsa_lista_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/operitingunits/operitingunits-lista/operitingunitsa-lista.component */ "I6K1");
+/* harmony import */ var _components_operitingunits_operitingunits_detalhes_operitingunits_detalhes_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component */ "ejDU");
+/* harmony import */ var _components_technologicalarea_technologicalarea_lista_technologicalarea_lista_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component */ "SjAz");
+/* harmony import */ var _components_technologicalarea_technologicalarea_detalhes_technologicalarea_detalhes_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component */ "YpOV");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -703,9 +1165,12 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_29__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_29__["ɵɵdefineInjector"]({ providers: [
-        _services_bunissesArea_service__WEBPACK_IMPORTED_MODULE_14__["BunissesAreaService"]
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_38__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_38__["ɵɵdefineInjector"]({ providers: [
+        _services_bunissesArea_service__WEBPACK_IMPORTED_MODULE_14__["BunissesAreaService"],
+        _services_marketArea_service__WEBPACK_IMPORTED_MODULE_15__["MarketAreaService"],
+        _services_operitingUnits_service__WEBPACK_IMPORTED_MODULE_16__["OperitingUnitsService"],
+        _services_technologicalArea_service__WEBPACK_IMPORTED_MODULE_17__["TechnologicalAreaService"]
     ], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
@@ -721,26 +1186,53 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_29__["ɵɵdefineInjecto
             ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_4__["BsDatepickerModule"].forRoot(),
             ngx_spinner__WEBPACK_IMPORTED_MODULE_10__["NgxSpinnerModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_29__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
-        _components_business_area_business_area_component__WEBPACK_IMPORTED_MODULE_20__["BusinessAreaComponent"],
-        _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_15__["MarketAreaComponent"],
-        _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_18__["OperitingunitsComponent"],
-        _components_organationalstructure_organationalstructure_component__WEBPACK_IMPORTED_MODULE_19__["OrganationalstructureComponent"],
-        _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_17__["TechnologicalareaComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_38__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_11__["AppComponent"],
+        _components_business_area_business_area_component__WEBPACK_IMPORTED_MODULE_23__["BusinessAreaComponent"],
+        _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_19__["MarketAreaComponent"],
+        _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_21__["OperitingunitsComponent"],
+        _components_organationalstructure_organationalstructure_component__WEBPACK_IMPORTED_MODULE_22__["OrganationalstructureComponent"],
+        _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_20__["TechnologicalareaComponent"],
         _shared_Nav_Nav_component__WEBPACK_IMPORTED_MODULE_12__["NavComponent"],
-        _shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_21__["TituloComponent"],
-        _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_22__["DashboardComponent"],
-        _components_user_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_23__["PerfilComponent"],
-        _helpers_DateFormat_pipe__WEBPACK_IMPORTED_MODULE_16__["DateFormatPipe"],
-        _components_business_area_business_area_detalhes_business_area_detalhes_component__WEBPACK_IMPORTED_MODULE_24__["BusinessAreaDetalhesComponent"],
-        _components_business_area_business_area_lista_business_area_lista_component__WEBPACK_IMPORTED_MODULE_25__["BusinessAreaListaComponent"],
-        _components_user_user_component__WEBPACK_IMPORTED_MODULE_26__["UserComponent"],
-        _components_user_login_login_component__WEBPACK_IMPORTED_MODULE_27__["LoginComponent"],
-        _components_user_registration_registration_component__WEBPACK_IMPORTED_MODULE_28__["RegistrationComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_24__["TituloComponent"],
+        _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_25__["DashboardComponent"],
+        _components_user_perfil_perfil_component__WEBPACK_IMPORTED_MODULE_26__["PerfilComponent"],
+        _helpers_DateFormat_pipe__WEBPACK_IMPORTED_MODULE_18__["DateFormatPipe"],
+        _components_business_area_business_area_detalhes_business_area_detalhes_component__WEBPACK_IMPORTED_MODULE_27__["BusinessAreaDetalhesComponent"],
+        _components_business_area_business_area_lista_business_area_lista_component__WEBPACK_IMPORTED_MODULE_28__["BusinessAreaListaComponent"],
+        _components_user_user_component__WEBPACK_IMPORTED_MODULE_29__["UserComponent"],
+        _components_user_login_login_component__WEBPACK_IMPORTED_MODULE_30__["LoginComponent"],
+        _components_user_registration_registration_component__WEBPACK_IMPORTED_MODULE_31__["RegistrationComponent"],
+        _components_market_area_market_area_lista_market_area_lista_component__WEBPACK_IMPORTED_MODULE_32__["MarketAreaListaComponent"],
+        _components_market_area_market_area_detalhes_market_area_detalhes_component__WEBPACK_IMPORTED_MODULE_33__["MarketAreaDetalhesComponent"],
+        _components_operitingunits_operitingunits_lista_operitingunitsa_lista_component__WEBPACK_IMPORTED_MODULE_34__["OperitingunitsaListaComponent"],
+        _components_operitingunits_operitingunits_detalhes_operitingunits_detalhes_component__WEBPACK_IMPORTED_MODULE_35__["OperitingunitsDetalhesComponent"],
+        _components_technologicalarea_technologicalarea_lista_technologicalarea_lista_component__WEBPACK_IMPORTED_MODULE_36__["TechnologicalareaListaComponent"],
+        _components_technologicalarea_technologicalarea_detalhes_technologicalarea_detalhes_component__WEBPACK_IMPORTED_MODULE_37__["TechnologicalareaDetalhesComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], ngx_bootstrap_collapse__WEBPACK_IMPORTED_MODULE_5__["CollapseModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"], ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_6__["TooltipModule"], ngx_bootstrap_dropdown__WEBPACK_IMPORTED_MODULE_7__["BsDropdownModule"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_8__["ModalModule"], ngx_toastr__WEBPACK_IMPORTED_MODULE_9__["ToastrModule"], ngx_bootstrap_datepicker__WEBPACK_IMPORTED_MODULE_4__["BsDatepickerModule"], ngx_spinner__WEBPACK_IMPORTED_MODULE_10__["NgxSpinnerModule"]] }); })();
+
+
+/***/ }),
+
+/***/ "axIW":
+/*!*******************************************************!*\
+  !*** ./src/app/services/technologicalArea.service.ts ***!
+  \*******************************************************/
+/*! exports provided: TechnologicalAreaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TechnologicalAreaService", function() { return TechnologicalAreaService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class TechnologicalAreaService {
+    constructor() { }
+}
+TechnologicalAreaService.ɵfac = function TechnologicalAreaService_Factory(t) { return new (t || TechnologicalAreaService)(); };
+TechnologicalAreaService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: TechnologicalAreaService, factory: TechnologicalAreaService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -830,6 +1322,7 @@ class BusinessAreaDetalhesComponent {
             this.estadoSalvar = 'put';
             this.businessService.getBunissesAreaById(+businessIdParam).subscribe({
                 next: (business) => {
+                    console.log(business);
                     this.business = Object.assign({}, business);
                     this.form.patchValue(this.business);
                 },
@@ -862,23 +1355,13 @@ class BusinessAreaDetalhesComponent {
     salvarAlteracao() {
         this.spinner.show();
         if (this.form.valid) {
-            if (this.estadoSalvar === 'post') {
-                this.business.IsDeleted = false;
-                this.business = Object.assign({}, this.form.value);
-                this.businessService.postBunisses(this.business).subscribe(() => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'), (error) => {
-                    console.log(error);
-                    this.spinner.hide();
-                    this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
-                }, () => this.spinner.hide());
-            }
-            else {
-                this.business = Object.assign({ id: this.business.id }, this.form.value);
-                this.businessService.putBunisses(this.business.id, this.business).subscribe(() => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'), (error) => {
-                    console.log(error);
-                    this.spinner.hide();
-                    this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
-                }, () => this.spinner.hide());
-            }
+            this.business = (this.estadoSalvar === 'post')
+                ? Object.assign({}, this.form.value) : Object.assign({ id: this.business.id }, this.form.value);
+            this.businessService[this.estadoSalvar](this.business).subscribe(() => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'), (error) => {
+                console.log(error);
+                this.spinner.hide();
+                this.toastr.error('Erro ao salvar unidade de negócio', 'Erro!');
+            }, () => this.spinner.hide());
         }
     }
 }
@@ -1191,6 +1674,77 @@ BusinessAreaListaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["�
 
 /***/ }),
 
+/***/ "ejDU":
+/*!********************************************************************************************************!*\
+  !*** ./src/app/components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component.ts ***!
+  \********************************************************************************************************/
+/*! exports provided: OperitingunitsDetalhesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperitingunitsDetalhesComponent", function() { return OperitingunitsDetalhesComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class OperitingunitsDetalhesComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+OperitingunitsDetalhesComponent.ɵfac = function OperitingunitsDetalhesComponent_Factory(t) { return new (t || OperitingunitsDetalhesComponent)(); };
+OperitingunitsDetalhesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: OperitingunitsDetalhesComponent, selectors: [["app-operitingunits-detalhes"]], decls: 2, vars: 0, template: function OperitingunitsDetalhesComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "operitingunits-detalhes works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvcGVyaXRpbmd1bml0cy1kZXRhbGhlcy5jb21wb25lbnQuc2NzcyJ9 */"] });
+
+
+/***/ }),
+
+/***/ "hMua":
+/*!************************************************!*\
+  !*** ./src/app/services/marketArea.service.ts ***!
+  \************************************************/
+/*! exports provided: MarketAreaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MarketAreaService", function() { return MarketAreaService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+class MarketAreaService {
+    constructor(http) {
+        this.http = http;
+        this.baseUrl = 'https://localhost:5001/api/MarketArea';
+    }
+    getMarketArea() {
+        return this.http.get(this.baseUrl);
+    }
+    getMarketAreaBySigla(sigla) {
+        return this.http.get(`${this.baseUrl}/${sigla}/sigla`);
+    }
+    getMarketAreaById(id) {
+        return this.http.get(`${this.baseUrl}/${id}`);
+    }
+    post(marketArea) {
+        return this.http.post(this.baseUrl, marketArea);
+    }
+    put(marketArea) {
+        return this.http.put(`${this.baseUrl}/${marketArea.id}`, marketArea);
+    }
+    deleteMarket(id) {
+        return this.http.delete(`${this.baseUrl}/${id}`);
+    }
+}
+MarketAreaService.ɵfac = function MarketAreaService_Factory(t) { return new (t || MarketAreaService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+MarketAreaService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: MarketAreaService, factory: MarketAreaService.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ "hzBV":
 /*!**********************************************************!*\
   !*** ./src/app/components/user/login/login.component.ts ***!
@@ -1378,6 +1932,27 @@ OperitingunitsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("titulo", "Unidade Operacional");
     } }, directives: [_shared_titulo_titulo_component__WEBPACK_IMPORTED_MODULE_1__["TituloComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJvcGVyaXRpbmd1bml0cy5jb21wb25lbnQuc2NzcyJ9 */"] });
+
+
+/***/ }),
+
+/***/ "o1hQ":
+/*!****************************************************!*\
+  !*** ./src/app/services/operitingUnits.service.ts ***!
+  \****************************************************/
+/*! exports provided: OperitingUnitsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OperitingUnitsService", function() { return OperitingUnitsService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class OperitingUnitsService {
+    constructor() { }
+}
+OperitingUnitsService.ɵfac = function OperitingUnitsService_Factory(t) { return new (t || OperitingUnitsService)(); };
+OperitingUnitsService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: OperitingUnitsService, factory: OperitingUnitsService.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -1750,7 +2325,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_user_user_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/user/user.component */ "ytin");
 /* harmony import */ var _components_user_login_login_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/user/login/login.component */ "hzBV");
 /* harmony import */ var _components_user_registration_registration_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/user/registration/registration.component */ "Jjgw");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _components_market_area_market_area_detalhes_market_area_detalhes_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/market-area/market-area-detalhes/market-area-detalhes.component */ "LFd4");
+/* harmony import */ var _components_market_area_market_area_lista_market_area_lista_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/market-area/market-area-lista/market-area-lista.component */ "F6uJ");
+/* harmony import */ var _components_operitingunits_operitingunits_detalhes_operitingunits_detalhes_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component */ "ejDU");
+/* harmony import */ var _components_operitingunits_operitingunits_lista_operitingunitsa_lista_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/operitingunits/operitingunits-lista/operitingunitsa-lista.component */ "I6K1");
+/* harmony import */ var _components_technologicalarea_technologicalarea_detalhes_technologicalarea_detalhes_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component */ "YpOV");
+/* harmony import */ var _components_technologicalarea_technologicalarea_lista_technologicalarea_lista_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component */ "SjAz");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+
 
 
 
@@ -1783,9 +2370,27 @@ const routes = [
             { path: 'lista', component: _components_business_area_business_area_lista_business_area_lista_component__WEBPACK_IMPORTED_MODULE_9__["BusinessAreaListaComponent"] },
         ]
     },
-    { path: 'areademercado', component: _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_2__["MarketAreaComponent"] },
-    { path: 'unidadeoperacional', component: _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_3__["OperitingunitsComponent"] },
-    { path: 'areatecnologica', component: _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_5__["TechnologicalareaComponent"] },
+    { path: 'areademercado', component: _components_market_area_market_area_component__WEBPACK_IMPORTED_MODULE_2__["MarketAreaComponent"],
+        children: [
+            { path: 'detalhe/:id', component: _components_market_area_market_area_detalhes_market_area_detalhes_component__WEBPACK_IMPORTED_MODULE_13__["MarketAreaDetalhesComponent"] },
+            { path: 'detalhes', component: _components_market_area_market_area_detalhes_market_area_detalhes_component__WEBPACK_IMPORTED_MODULE_13__["MarketAreaDetalhesComponent"] },
+            { path: 'lista', component: _components_market_area_market_area_lista_market_area_lista_component__WEBPACK_IMPORTED_MODULE_14__["MarketAreaListaComponent"] },
+        ]
+    },
+    { path: 'unidadeoperacional', component: _components_operitingunits_operitingunits_component__WEBPACK_IMPORTED_MODULE_3__["OperitingunitsComponent"],
+        children: [
+            { path: 'detalhe/:id', component: _components_operitingunits_operitingunits_detalhes_operitingunits_detalhes_component__WEBPACK_IMPORTED_MODULE_15__["OperitingunitsDetalhesComponent"] },
+            { path: 'detalhes', component: _components_operitingunits_operitingunits_detalhes_operitingunits_detalhes_component__WEBPACK_IMPORTED_MODULE_15__["OperitingunitsDetalhesComponent"] },
+            { path: 'lista', component: _components_operitingunits_operitingunits_lista_operitingunitsa_lista_component__WEBPACK_IMPORTED_MODULE_16__["OperitingunitsaListaComponent"] },
+        ]
+    },
+    { path: 'areatecnologica', component: _components_technologicalarea_technologicalarea_component__WEBPACK_IMPORTED_MODULE_5__["TechnologicalareaComponent"],
+        children: [
+            { path: 'detalhe/:id', component: _components_technologicalarea_technologicalarea_detalhes_technologicalarea_detalhes_component__WEBPACK_IMPORTED_MODULE_17__["TechnologicalareaDetalhesComponent"] },
+            { path: 'detalhes', component: _components_technologicalarea_technologicalarea_detalhes_technologicalarea_detalhes_component__WEBPACK_IMPORTED_MODULE_17__["TechnologicalareaDetalhesComponent"] },
+            { path: 'lista', component: _components_technologicalarea_technologicalarea_lista_technologicalarea_lista_component__WEBPACK_IMPORTED_MODULE_18__["TechnologicalareaListaComponent"] },
+        ]
+    },
     { path: 'organizacaoestrutural', component: _components_organationalstructure_organationalstructure_component__WEBPACK_IMPORTED_MODULE_4__["OrganationalstructureComponent"] },
     { path: 'dasharboard', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"] },
     { path: '', redirectTo: 'dasharboard', pathMatch: 'full' },
@@ -1794,9 +2399,9 @@ const routes = [
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),

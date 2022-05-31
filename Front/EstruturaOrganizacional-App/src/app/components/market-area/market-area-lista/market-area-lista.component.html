@@ -1,1 +1,52 @@
-<p>market-area-lista works!</p>
+<div class="card rounded shadow-sm p-3">
+
+  <div class="input-group flex-nowrap" style="margin-bottom: 2%">
+    <span class="input-group-text" id="addon-wrapping">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+    </span>
+    <input [(ngModel)]="filtroLista" type="text" class="form-control" placeholder="Pesquise area de negocio" aria-label="Username" aria-describedby="addon-wrapping" >
+    <a class="d-flex btn btn-outline-primary" routerLink="/areademercado/detalhes">
+      <i class="fa fa-plus-circle my-1"></i>
+      <b class="ml-1 d-none d-sm-block">Novo</b>
+    </a>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class=" thead-dark">
+      <tr>
+        <th style="text-align: center; vertical-align:middle !important">#</th>
+        <th style="text-align: center; vertical-align:middle !important">Descrição</th>
+        <th style="text-align: center; vertical-align:middle !important">Opção</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="marketarea && marketarea.length">
+      <tr *ngFor="let marketarea of marketareafiltrados" (click) = "detalheMarket(marketarea.id)" style="cursor: pointer;">
+        <td style="text-align: center; vertical-align:middle !important">{{marketarea.id}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{marketarea.descricao}}</td>
+        <td style="text-align: center; vertical-align:middle !important">
+          <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, marketarea.id)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!marketarea.length">
+      <tr>
+        <td colspan="6" class="text-center">
+          <h4 >Nenhuma Area de Mercado encontrada</h4>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<! --{{Area de Mercado - JSON}}  -->
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja deletar a area de mercado?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>

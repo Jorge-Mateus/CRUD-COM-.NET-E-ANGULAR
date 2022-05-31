@@ -13,6 +13,12 @@ import { BusinessAreaListaComponent } from './components/business-area/business-
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { MarketAreaDetalhesComponent } from './components/market-area/market-area-detalhes/market-area-detalhes.component';
+import { MarketAreaListaComponent } from './components/market-area/market-area-lista/market-area-lista.component';
+import { OperitingunitsDetalhesComponent } from './components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component';
+import { OperitingunitsaListaComponent } from './components/operitingunits/operitingunits-lista/operitingunitsa-lista.component';
+import { TechnologicalareaDetalhesComponent } from './components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component';
+import { TechnologicalareaListaComponent } from './components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component';
 
 const routes: Routes = [
 
@@ -32,9 +38,28 @@ const routes: Routes = [
       {path: 'lista', component: BusinessAreaListaComponent},
     ]
   },
-  { path: 'areademercado', component: MarketAreaComponent},
-  { path: 'unidadeoperacional', component: OperitingunitsComponent},
-  { path: 'areatecnologica', component: TechnologicalareaComponent},
+  { path: 'areademercado', redirectTo: 'areademercado/lista'},
+  { path: 'areademercado', component: MarketAreaComponent,
+    children: [
+      {path: 'detalhe/:id', component: MarketAreaDetalhesComponent},
+      {path: 'detalhes', component: MarketAreaDetalhesComponent},
+      {path: 'lista', component: MarketAreaListaComponent},
+    ]
+  },
+  { path: 'unidadeoperacional', component: OperitingunitsComponent,
+    children: [
+      {path: 'detalhe/:id', component: OperitingunitsDetalhesComponent},
+      {path: 'detalhes', component: OperitingunitsDetalhesComponent},
+      {path: 'lista', component: OperitingunitsaListaComponent},
+    ]
+  },
+  { path: 'areatecnologica', component: TechnologicalareaComponent,
+    children: [
+      {path: 'detalhe/:id', component: TechnologicalareaDetalhesComponent},
+      {path: 'detalhes', component: TechnologicalareaDetalhesComponent},
+      {path: 'lista', component: TechnologicalareaListaComponent},
+    ]
+  },
   { path: 'organizacaoestrutural', component: OrganationalstructureComponent},
   { path: 'dasharboard', component: DashboardComponent},
   { path: '', redirectTo: 'dasharboard', pathMatch: 'full'},

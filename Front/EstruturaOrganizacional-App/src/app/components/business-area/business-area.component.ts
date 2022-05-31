@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +14,9 @@ import { BunissesAreaService } from 'src/app/services/bunissesArea.service';
   styleUrls: ['./business-area.component.scss']
 })
 export class BusinessAreaComponent implements OnInit {
+  public form: FormGroup;
+
+
  ngOnInit(): void {
  }
 

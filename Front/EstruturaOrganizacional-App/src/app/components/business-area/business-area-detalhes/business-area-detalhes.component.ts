@@ -83,7 +83,6 @@ export class BusinessAreaDetalhesComponent implements OnInit {
         this.business =  (this.estadoSalvar === 'post')
                      ? {...this.form.value}
                      : {id: this.business.id, ...this.form.value};
-        //this.business.IsDeleted = false; 
         this.businessService[this.estadoSalvar](this.business).subscribe(
           () => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'),
           (error: any) => {

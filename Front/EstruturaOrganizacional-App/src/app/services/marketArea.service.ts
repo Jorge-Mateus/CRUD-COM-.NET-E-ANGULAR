@@ -16,7 +16,7 @@ export class MarketAreaService {
     return this.http.get<MarketArea[]>(this.baseUrl);
   }
 
-  public getMarketAreaBySigla(sigla: string): Observable<MarketArea[]> {
+  public getMarketAreaByDescricao(sigla: string): Observable<MarketArea[]> {
     return this.http.get<MarketArea[]>(`${this.baseUrl}/${sigla}/sigla`);
   }
 

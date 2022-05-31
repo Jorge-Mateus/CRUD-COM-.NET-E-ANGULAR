@@ -1,1 +1,37 @@
-<p>market-area-detalhes works!</p>
+<div class="card rounded shadow-sm" [formGroup]="form">
+  <form [formGroup]="form">
+    <div class="p-3">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>Descrição</label>
+
+          <input type="text" class="form-control" [ngClass]="cssValidador(f.descricao)"
+          formControlName="descricao" placeholder="Informe a unidade de negocio">
+
+          <div *ngIf="f.descricao.errors?.required" class="invalid-feedback">
+            Descrição é obrigatória o preenchimento!
+          </div>
+
+          <div *ngIf="f.descricao.errors?.minlength" class="invalid-feedback">
+            Descrição minima é de 4 caracteres!
+          </div>
+
+          <div *ngIf="f.descricao.errors?.maxlength" class="invalid-feedback">
+            Descrição maxima é de 50 caracteres!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()" routerLink="/areademercado/lista">
+          Cancelar Alteração
+        </button>
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">
+          <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+          Salvar unidade
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
