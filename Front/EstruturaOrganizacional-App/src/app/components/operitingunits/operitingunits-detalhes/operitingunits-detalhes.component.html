@@ -22,11 +22,11 @@
       <div class="form-row">
 
         <div class="form-group col-md-8">
-          <label>Sigla</label>
+          <label>sigla</label>
           <input type="text" class="form-control"  [ngClass]="cssValidador(f.sigla)"
           formControlName="sigla" placeholder="">
           <div  *ngIf="f.sigla.errors?.required" class="invalid-feedback">
-            Sigla é obrigatória o preenchimento!
+            sigla é obrigatória o preenchimento!
           </div>
           <div  *ngIf="f.sigla.errors?.maxlength" class="invalid-feedback">
             Tamanho maximo é de 10 caracteres.
@@ -52,7 +52,7 @@
     </div>
     <div class="card-footer">
       <div class="d-flex">
-        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()" routerLink="/unidadeoperacional/lista">
+        <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()" routerLink="filial/lista">
           Cancelar Alteração
         </button>
         <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">

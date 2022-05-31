@@ -12,8 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./operitingunitsa-lista.component.scss']
 })
 export class OperitingunitsaListaComponent implements OnInit {
+
   modalRef = {} as BsModalRef;
-  public operating: OperatingUnit[] = [];
+  public filial: OperatingUnit[] = [];
   public operatingfiltrados: OperatingUnit[] = [];
   private filtroListado = '';
   public operatingId = 0;
@@ -25,12 +26,12 @@ export class OperitingunitsaListaComponent implements OnInit {
 
   public set filtroLista(value: string){
     this.filtroListado = value;
-    this.operatingfiltrados = this.filtroLista ? this.filtrarUnidades(this.filtroLista) : this.operating;
+    this.operatingfiltrados = this.filtroLista ? this.filtrarUnidades(this.filtroLista) : this.filial;
   }
 
   public filtrarUnidades(filtrarPor: string): OperatingUnit[]{
     filtrarPor = filtrarPor.toLocaleLowerCase();
-    return this.operating.filter(
+    return this.filial.filter(
       (businessarea: any) => businessarea.sigla.toLocaleLowerCase().indexOf(filtrarPor) !== -1 ||
       businessarea.codReduzido.toLocaleLowerCase().indexOf(filtrarPor) !== -1
     );
@@ -44,7 +45,7 @@ export class OperitingunitsaListaComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getCarregarOperating();
 
     this.spinner.show();
@@ -58,8 +59,8 @@ export class OperitingunitsaListaComponent implements OnInit {
   public getCarregarOperating(): void {
     this.operatingAreaservice.getOperatingUnit().subscribe(
       (operatgingAreasResp: OperatingUnit[]) => {
-        this.operating = operatgingAreasResp;
-        this.operatingfiltrados = this.operating;
+        this.filial = operatgingAreasResp;
+        this.operatingfiltrados = this.filial;
       },
       error => console.log(error)
     );
@@ -72,7 +73,6 @@ export class OperitingunitsaListaComponent implements OnInit {
   }
 
   confirm(): void {
-    //Modificar a parte de confirmação do delete para que ele seja === e não diferente!
     this.modalRef.hide();
     this.spinner.show();
     this.operatingAreaservice.deleteOperatingUnits(this.operatingId).subscribe(
@@ -98,7 +98,7 @@ export class OperitingunitsaListaComponent implements OnInit {
     this.modalRef.hide();
   }
 
-  detalheNegocio(id: number): void{
-    this.router.navigate([`unidadeoperacional/detalhe/${id}`]);
+  detalheOperiting(id: number): void{
+    this.router.navigate([`filial/detalhe/${id}`]);
   }
 }

@@ -41,19 +41,21 @@ const routes: Routes = [
   { path: 'areademercado', redirectTo: 'areademercado/lista'},
   { path: 'areademercado', component: MarketAreaComponent,
     children: [
-      {path: 'detalhe/:id', component: MarketAreaDetalhesComponent},
+      {path:  'detalhe/:id', component: MarketAreaDetalhesComponent},
       {path: 'detalhes', component: MarketAreaDetalhesComponent},
       {path: 'lista', component: MarketAreaListaComponent},
     ]
   },
-  { path: 'unidadeoperacional', redirectTo: 'unidadeoperacional/lista'},
-  { path: 'unidadeoperacional', component: OperitingunitsComponent,
+
+  { path: 'filial', redirectTo: 'filial/lista'},
+  { path: 'filial', component: OperitingunitsComponent,
     children: [
       {path: 'detalhe/:id', component: OperitingunitsDetalhesComponent},
       {path: 'detalhes', component: OperitingunitsDetalhesComponent},
       {path: 'lista', component: OperitingunitsaListaComponent},
     ]
   },
+  { path: 'areatecnologica', redirectTo: 'areatecnologica/lista'},
   { path: 'areatecnologica', component: TechnologicalareaComponent,
     children: [
       {path: 'detalhe/:id', component: TechnologicalareaDetalhesComponent},

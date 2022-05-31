@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OperitingunitsDetalhesComponent implements OnInit {
 
-  operating = {} as OperatingUnit;
+  filial = {} as OperatingUnit;
   public form: FormGroup;
   estadoSalvar = 'post';
 
@@ -39,8 +39,8 @@ export class OperitingunitsDetalhesComponent implements OnInit {
           next: (operating: OperatingUnit)  =>
           {
             console.log(operating);
-            this.operating = {...operating};
-            this.form.patchValue(this.operating);
+            this.filial = {...operating};
+            this.form.patchValue(this.filial);
           },
           error: any => {
             this.spinner.hide();
@@ -52,7 +52,7 @@ export class OperitingunitsDetalhesComponent implements OnInit {
       }
     }
 
-    ngOnInit(): void {
+  public ngOnInit(): void {
       this.validation();
       this.carregarUnidades();
     }
@@ -80,10 +80,10 @@ export class OperitingunitsDetalhesComponent implements OnInit {
 
       if (this.form.valid){
 
-        this.operating =  (this.estadoSalvar === 'post')
+        this.filial =  (this.estadoSalvar === 'post')
                      ? {...this.form.value}
-                     : {id: this.operating.id, ...this.form.value};
-        this.operationService[this.estadoSalvar](this.operating).subscribe(
+                     : {id: this.filial.id, ...this.form.value};
+        this.operationService[this.estadoSalvar](this.filial).subscribe(
           () => this.toastr.success('Unidade de negócio salvo com Sucesso!', 'Sucesso'),
           (error: any) => {
             console.log(error);

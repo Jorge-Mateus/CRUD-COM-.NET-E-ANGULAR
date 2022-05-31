@@ -7,7 +7,7 @@
       </svg>
     </span>
     <input [(ngModel)]="filtroLista" type="text" class="form-control" placeholder="Pesquise area de negocio" aria-label="Username" aria-describedby="addon-wrapping" >
-    <a class="d-flex btn btn-outline-primary" routerLink="/unidadeoperacional/detalhes">
+    <a class="d-flex btn btn-outline-primary" routerLink="/filial/detalhes">
       <i class="fa fa-plus-circle my-1"></i>
       <b class="ml-1 d-none d-sm-block">Novo</b>
     </a>
@@ -17,25 +17,25 @@
       <tr>
         <th style="text-align: center; vertical-align:middle !important">#</th>
         <th style="text-align: center; vertical-align:middle !important">Descrição</th>
-        <th style="text-align: center; vertical-align:middle !important">Sigla do Negócio</th>
+        <th style="text-align: center; vertical-align:middle !important">Sigla</th>
         <th style="text-align: center; vertical-align:middle !important">Código Reduzido</th>
         <th style="text-align: center; vertical-align:middle !important">Opção</th>
       </tr>
     </thead>
-    <tbody *ngIf="operating && operating.length">
-      <tr *ngFor="let businessarea of operatingfiltrados" (click) = "detalheNegocio(operating.id)" style="cursor: pointer;">
-        <td style="text-align: center; vertical-align:middle !important">{{operating.id}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{operating.descricao}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{operating.sigla}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{operating.codReduzido}}</td>
+    <tbody *ngIf="filial && filial.length">
+      <tr *ngFor="let businessarea of operatingfiltrados" (click) = "detalheOperiting(filial.id)" style="cursor: pointer;">
+        <td style="text-align: center; vertical-align:middle !important">{{filial.id}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{filial.descricao}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{filial.sigla}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{filial.codReduzido}}</td>
         <td style="text-align: center; vertical-align:middle !important">
-          <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, operating.id)">
+          <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, filial.id)">
             <i class="fa fa-trash"></i>
           </button>
         </td>
       </tr>
     </tbody>
-    <tfoot *ngIf="!operating.length">
+    <tfoot *ngIf="!filial.length">
       <tr>
         <td colspan="6" class="text-center">
           <h4 >Nenhuma Unidade de Negócio encontrada</h4>

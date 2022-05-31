@@ -21,6 +21,7 @@ export class BusinessAreaDetalhesComponent implements OnInit {
   get f(): any{
     return this.form.controls;
   }
+  
   constructor(private fb: FormBuilder,
     private router: ActivatedRoute,
     private businessService: BunissesAreaService,
