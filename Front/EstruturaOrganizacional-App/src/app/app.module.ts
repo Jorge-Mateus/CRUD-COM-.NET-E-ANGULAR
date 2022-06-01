@@ -46,6 +46,8 @@ import { OperitingunitsaListaComponent } from './components/operitingunits/operi
 import { OperitingunitsDetalhesComponent } from './components/operitingunits/operitingunits-detalhes/operitingunits-detalhes.component';
 import { TechnologicalareaListaComponent } from './components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component';
 import { TechnologicalareaDetalhesComponent } from './components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component';
+import { OrganationalstructureaDetalhesComponent } from './components/organationalstructure/organationalstructurea-detalhes/organationalstructurea-detalhes.component';
+import { OrganationalstructureaListaComponent } from './components/organationalstructure/organationalstructurea-lista/organationalstructurea-lista.component';
 
 
 
@@ -72,7 +74,9 @@ import { TechnologicalareaDetalhesComponent } from './components/technologicalar
     OperitingunitsaListaComponent,
     OperitingunitsDetalhesComponent,
     TechnologicalareaListaComponent,
-    TechnologicalareaDetalhesComponent
+    TechnologicalareaDetalhesComponent,
+    OrganationalstructureaDetalhesComponent,
+    OrganationalstructureaListaComponent
    ],
   imports: [
     BrowserModule,

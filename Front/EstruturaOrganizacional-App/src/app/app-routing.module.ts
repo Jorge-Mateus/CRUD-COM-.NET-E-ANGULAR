@@ -19,6 +19,8 @@ import { OperitingunitsDetalhesComponent } from './components/operitingunits/ope
 import { OperitingunitsaListaComponent } from './components/operitingunits/operitingunits-lista/operitingunitsa-lista.component';
 import { TechnologicalareaDetalhesComponent } from './components/technologicalarea/technologicalarea-detalhes/technologicalarea-detalhes.component';
 import { TechnologicalareaListaComponent } from './components/technologicalarea/technologicalarea-lista/technologicalarea-lista.component';
+import { OrganationalstructureaDetalhesComponent } from './components/organationalstructure/organationalstructurea-detalhes/organationalstructurea-detalhes.component';
+import { OrganationalstructureaListaComponent } from './components/organationalstructure/organationalstructurea-lista/organationalstructurea-lista.component';
 
 const routes: Routes = [
 
@@ -63,7 +65,14 @@ const routes: Routes = [
       {path: 'lista', component: TechnologicalareaListaComponent},
     ]
   },
-  { path: 'organizacaoestrutural', component: OrganationalstructureComponent},
+  { path: 'organizacaoestrutural', redirectTo: 'organizacaoestrutural/lista'},
+  { path: 'organizacaoestrutural', component: OrganationalstructureComponent,
+    children: [
+      {path: 'detalhe/:id', component: OrganationalstructureaDetalhesComponent},
+      {path: 'detalhe', component: OrganationalstructureaDetalhesComponent},
+      {path: 'lista', component: OrganationalstructureaListaComponent},
+    ]
+    },
   { path: 'dasharboard', component: DashboardComponent},
   { path: '', redirectTo: 'dasharboard', pathMatch: 'full'},
   { path: '**', redirectTo: 'dasharboard', pathMatch: 'full'}

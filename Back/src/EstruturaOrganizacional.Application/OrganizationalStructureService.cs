@@ -36,6 +36,7 @@ namespace EstruturaOrganizacional.Application
 
                 _geralPersist.Add<OrganizationalStructure>(organization);
 
+
                 if(await _geralPersist.SaveChangesAsyncs())
                 {
                     var retorno = await _organizationalStructurePersit.GetAllOrganizationalStructureByIdAsync(organization.id, false);
