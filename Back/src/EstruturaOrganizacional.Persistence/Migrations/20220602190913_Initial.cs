@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EstruturaOrganizacional.Persistence.Migrations
 {
@@ -75,7 +74,7 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    ano = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ano = table.Column<int>(type: "int", nullable: false),
                     BusinessAreasid = table.Column<int>(type: "int", nullable: true),
                     MarketAreasid = table.Column<int>(type: "int", nullable: true),
                     TchnologicalAreasid = table.Column<int>(type: "int", nullable: true),

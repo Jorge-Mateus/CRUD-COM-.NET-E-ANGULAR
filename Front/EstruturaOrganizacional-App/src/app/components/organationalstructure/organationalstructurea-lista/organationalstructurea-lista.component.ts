@@ -61,6 +61,7 @@ export class OrganationalstructureaListaComponent implements OnInit {
       (organizacaoAreasResp: OrganationalStructure[]) => {
         this.organizacao = organizacaoAreasResp;
         this.organizacaofiltrados = this.organizacao;
+        console.log("Qualquer");
       },
       error => console.log(error)
     );

@@ -34,7 +34,7 @@ namespace EstruturaOrganizacional.Persistence
         {
             IQueryable<OrganizationalStructure> query = _context.ORGANIZATIONALSTRUCTURE;
 
-            query =  query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false && OE.ano.Year == ano);
+            query =  query.AsNoTracking().OrderBy(OE => OE.id).Where(OE => OE.IsDeleted == false && OE.ano == ano);
             return await query.ToArrayAsync();
         }
         

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EstruturaOrganizacional.Persistence.Migrations
 {
     [DbContext(typeof(EstruturaOrganizacionalContext))]
-    [Migration("20220530200339_Initial")]
+    [Migration("20220602190913_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,8 +109,8 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     b.Property<int?>("TchnologicalAreasid")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ano")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ano")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 

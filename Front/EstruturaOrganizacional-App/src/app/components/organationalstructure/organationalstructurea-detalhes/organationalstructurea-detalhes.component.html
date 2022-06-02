@@ -1,1 +1,75 @@
-<p>organationalstructurea-detalhes works!</p>
+<div class="card rounded shadow-sm" [formGroup]="form">
+  <form [formGroup]="form">
+    <div class="p-3">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label></label>
+          <label for="OperatingUnit" class="control-label">Unidade Operacional</label>
+          <select name="OperatingUnit" class="form-control" type="number" [ngClass]="cssValidador(f.OperatingUnit)"
+          formControlName="OperatingUnit" placeholder="---Selecione---">
+          <option *ngFor="let unidade of operating" [ngValue] = "unidade.id">
+            {{unidade.descricao}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="BusinessArea" class="control-label">Area de negócio</label>
+        <select name="BusinessArea" class="form-control" type="number" [ngClass]="cssValidador(f.BusinessArea)"
+        formControlName="BusinessArea" placeholder="---Selecione---">
+        <option *ngFor="let negocio of business" [ngValue] = "negocio.id">
+          {{negocio.descricao}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="TchnologicalArea" class="control-label">Area Tecnologica</label>
+      <select name="TchnologicalArea" class="form-control" type="number"[ngClass]="cssValidador(f.TchnologicalArea)"
+      formControlName="TchnologicalArea" placeholder="---Selecione---">
+      <option *ngFor="let areatc of tecnologia" [ngValue] = "areatc.id">
+        {{areatc.descricao}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="MarketArea" class="control-label">Area de Mercado</label>
+    <select name="MarketArea" class="form-control" type="number" [ngClass]="cssValidador(f.MarketArea)"
+    formControlName="MarketArea" placeholder="---Selecione---">
+    <option *ngFor="let merc of mercado" [ngValue] = "merc.id">
+      {{merc.descricao}}
+    </option>
+  </select>
+</div>
+<div class="form-group col-md-4">
+  <label>Ano</label>
+  <input type="text" class="form-control"  [ngClass]="cssValidador(f.ano)"
+  formControlName="ano" placeholder="">
+  <div  *ngIf="f.ano.errors?.required" class="invalid-feedback">
+    o ano é obrigatória o preenchimento!
+  </div>
+  <div  *ngIf="f.ano.errors?.maxlength" class="invalid-feedback">
+    Tamanho maximo é de 4 caracteres.
+  </div>
+  <div *ngIf="f.ano.errors?.minlength" class="invalid-feedback">
+    Descrição minima é de 3 caracteres!
+  </div>
+</div>
+</div>
+
+<div class="card-footer">
+  <div class="d-flex">
+    <button class="btn btn-outline-secondary mr-auto border" (click)="resetForm()" routerLink="/organizacaoestrutural/lista">
+      Cancelar Alteração
+    </button>
+    <button class="btn btn-success" [disabled]="!form.valid" (click)="salvarAlteracao()">
+      <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+      Salvar unidade
+    </button>
+  </div>
+</div>
+</div>
+</form>
+</div>

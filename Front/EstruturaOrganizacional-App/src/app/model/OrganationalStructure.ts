@@ -6,11 +6,11 @@ import { TchnologicalArea } from "./TchnologicalArea";
 export interface OrganationalStructure {
 
  id: number;
- ano: Date;
- BusinessArea: BusinessArea[];
- MarketArea: MarketArea[];
- TchnologicalArea: TchnologicalArea[];
- OperatingUnit: OperatingUnit[];
+ ano: number;
+ BusinessArea: BusinessArea;
+ MarketArea: MarketArea;
+ TchnologicalArea: TchnologicalArea;
+ OperatingUnit: OperatingUnit;
  IsDeleted: boolean;
 
 }

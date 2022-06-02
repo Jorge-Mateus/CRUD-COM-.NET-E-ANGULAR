@@ -69,7 +69,7 @@ const routes: Routes = [
   { path: 'organizacaoestrutural', component: OrganationalstructureComponent,
     children: [
       {path: 'detalhe/:id', component: OrganationalstructureaDetalhesComponent},
-      {path: 'detalhe', component: OrganationalstructureaDetalhesComponent},
+      {path: 'detalhes', component: OrganationalstructureaDetalhesComponent},
       {path: 'lista', component: OrganationalstructureaListaComponent},
     ]
     },

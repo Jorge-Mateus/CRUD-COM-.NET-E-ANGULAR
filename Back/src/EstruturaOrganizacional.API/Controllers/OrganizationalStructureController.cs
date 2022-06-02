@@ -81,11 +81,11 @@ namespace EstruturaOrganizacional.API.Controllers
         {
             try
             {
-                var ornazitional = await _organizationalStructure.AddOrganization(model);
+                var organizacao = await _organizationalStructure.AddOrganization(model);
                 
-                if(ornazitional == null) return NoContent(); 
+                if(organizacao == null) return NoContent(); 
 
-                return Ok(ornazitional);
+                return Ok(organizacao);
             }
             catch (Exception ex)
             {

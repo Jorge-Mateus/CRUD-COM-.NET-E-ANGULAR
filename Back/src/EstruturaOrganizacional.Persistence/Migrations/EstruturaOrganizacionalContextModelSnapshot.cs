@@ -107,8 +107,8 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                     b.Property<int?>("TchnologicalAreasid")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ano")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ano")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 

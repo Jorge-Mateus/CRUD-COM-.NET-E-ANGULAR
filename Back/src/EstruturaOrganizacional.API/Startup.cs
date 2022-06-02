@@ -36,6 +36,13 @@ namespace EstruturaOrganizacional.API
                 x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConn"))
 
             );
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
             services.AddControllers();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -82,9 +89,7 @@ namespace EstruturaOrganizacional.API
 
             app.UseAuthorization();
 
-            app.UseCors(x => x.AllowAnyHeader()
-                              .AllowAnyMethod()
-                              .AllowAnyOrigin());
+            app.UseCors("MyPolicy");
 
 
             app.UseEndpoints(endpoints =>

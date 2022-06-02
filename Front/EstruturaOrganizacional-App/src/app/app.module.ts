@@ -83,6 +83,7 @@ import { OrganationalstructureaListaComponent } from './components/organationals
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    BsDropdownModule,
     CollapseModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
