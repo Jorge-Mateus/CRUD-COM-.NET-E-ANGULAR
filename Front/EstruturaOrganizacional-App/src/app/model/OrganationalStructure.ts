@@ -7,10 +7,21 @@ export interface OrganationalStructure {
 
  id: number;
  ano: number;
+
  BusinessArea: BusinessArea;
+ BusinessAreaDtosId: number;
+
  MarketArea: MarketArea;
+ MarketAreaDtosID: number;
+
  TchnologicalArea: TchnologicalArea;
+ TechnologicalAreaDtosId: number;
+
  OperatingUnit: OperatingUnit;
+ OperatingUnitsDtosId: number;
+
+
  IsDeleted: boolean;
+
 
 }

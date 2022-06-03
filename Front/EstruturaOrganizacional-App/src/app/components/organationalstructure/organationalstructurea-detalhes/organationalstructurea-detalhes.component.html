@@ -7,7 +7,7 @@
           <label for="OperatingUnit" class="control-label">Unidade Operacional</label>
           <select name="OperatingUnit" class="form-control" type="number" [ngClass]="cssValidador(f.OperatingUnit)"
           formControlName="OperatingUnit" placeholder="---Selecione---">
-          <option *ngFor="let unidade of operating" [ngValue] = "unidade.id">
+          <option *ngFor="let unidade of operating" [ngValue] = "unidade">
             {{unidade.descricao}}
           </option>
         </select>
@@ -16,7 +16,7 @@
         <label for="BusinessArea" class="control-label">Area de negócio</label>
         <select name="BusinessArea" class="form-control" type="number" [ngClass]="cssValidador(f.BusinessArea)"
         formControlName="BusinessArea" placeholder="---Selecione---">
-        <option *ngFor="let negocio of business" [ngValue] = "negocio.id">
+        <option *ngFor="let negocio of business" [ngValue] = "negocio">
           {{negocio.descricao}}
         </option>
       </select>
@@ -29,7 +29,7 @@
       <label for="TchnologicalArea" class="control-label">Area Tecnologica</label>
       <select name="TchnologicalArea" class="form-control" type="number"[ngClass]="cssValidador(f.TchnologicalArea)"
       formControlName="TchnologicalArea" placeholder="---Selecione---">
-      <option *ngFor="let areatc of tecnologia" [ngValue] = "areatc.id">
+      <option *ngFor="let areatc of tecnologia" [ngValue] = "areatc">
         {{areatc.descricao}}
       </option>
     </select>
@@ -38,7 +38,7 @@
     <label for="MarketArea" class="control-label">Area de Mercado</label>
     <select name="MarketArea" class="form-control" type="number" [ngClass]="cssValidador(f.MarketArea)"
     formControlName="MarketArea" placeholder="---Selecione---">
-    <option *ngFor="let merc of mercado" [ngValue] = "merc.id">
+    <option *ngFor="let merc of mercado" [ngValue] = "merc">
       {{merc.descricao}}
     </option>
   </select>

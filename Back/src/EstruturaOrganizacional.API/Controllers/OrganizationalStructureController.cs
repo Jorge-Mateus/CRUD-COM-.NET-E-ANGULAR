@@ -77,15 +77,17 @@ namespace EstruturaOrganizacional.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(OrganizationalStructureDtos model)
+        public  async Task<IActionResult> Post(OrganizationalStructureDtos model)
         {
+            
             try
             {
-                var organizacao = await _organizationalStructure.AddOrganization(model);
+              var organizacao = await _organizationalStructure.AddOrganization(model);
                 
-                if(organizacao == null) return NoContent(); 
+               if(organizacao == null) return NoContent(); 
 
                 return Ok(organizacao);
+                
             }
             catch (Exception ex)
             {
@@ -135,6 +137,10 @@ namespace EstruturaOrganizacional.API.Controllers
                 $"Erro ao tentar deletar area de negocio: {ex.Message}");
             }
         }
+
+
+      
+
     }
 }
 

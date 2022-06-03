@@ -21,6 +21,44 @@ namespace EstruturaOrganizacional.Persistence.Contextos
         
         public DbSet <OrganizationalStructure> ORGANIZATIONALSTRUCTURE{ get; set; }
 
+        private void ModelCreateNature(ModelBuilder builder) {
+
+              builder.Entity<OrganizationalStructure>()
+
+                .HasOne(p => p.BusinessAreas)
+
+                .WithMany(p => p.Organizacao)
+
+                .HasForeignKey(p => p.BusinessAreaId);
+
+            builder.Entity<OrganizationalStructure>()
+
+                .HasOne(p => p.MarketAreas)
+
+                .WithMany(p => p.Organizacao)
+
+                .HasForeignKey(p => p.MarketAreaID);
+
+            builder.Entity<OrganizationalStructure>()
+
+                .HasOne(p => p.OperatingUnits)
+
+                .WithMany(p => p.Organizacao)
+
+                .HasForeignKey(p => p.OperatingUnitsId);
+
+            builder.Entity<OrganizationalStructure>()
+
+                .HasOne(p => p.TchnologicalAreas)
+
+                .WithMany(p => p.Organizacao)
+
+                .HasForeignKey(p => p.TechnologicalAreaId);
+
+        }
+
+       
+
         
     }
 }

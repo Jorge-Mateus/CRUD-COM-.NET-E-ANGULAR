@@ -24,11 +24,12 @@ import { MarketAreaService } from '@app/services/marketArea.service';
 })
 export class OrganationalstructureaDetalhesComponent implements OnInit {
 
-  mercado: MarketArea[] = [];
-  tecnologia: TchnologicalArea[] = [];
-  business: BusinessArea [] = [];
-  operating: OperatingUnit[] = [];
+  mercado: MarketArea;
+  tecnologia: TchnologicalArea;
+  business: BusinessArea;
+  operating: OperatingUnit;
   organizacao = {} as OrganationalStructure;
+  organizacaoSend = {} as OrganationalStructure;
   public form: FormGroup;
   estadoSalvar = 'post';
 
@@ -38,6 +39,7 @@ export class OrganationalstructureaDetalhesComponent implements OnInit {
   }
 
   constructor(
+    // private organizacao2
     private fb: FormBuilder,
     private router: ActivatedRoute,
     private organizacaoService: OrganizationStructureService,
@@ -117,6 +119,7 @@ export class OrganationalstructureaDetalhesComponent implements OnInit {
 
   public salvarAlteracao(): void{
 
+
     this.spinner.show();
 
     if (this.form.valid){
@@ -125,7 +128,19 @@ export class OrganationalstructureaDetalhesComponent implements OnInit {
                    ? {...this.form.value}
                    : {id: this.organizacao.id, ...this.form.value};
       console.log(this.organizacao);
-      this.organizacaoService[this.estadoSalvar](this.organizacao).subscribe(
+      this.organizacaoSend.id = 0;
+      this.organizacaoSend.BusinessArea = this.organizacao.BusinessArea;
+      this.organizacaoSend.BusinessAreaDtosId = this.organizacao.BusinessArea.id;
+      this.organizacaoSend.MarketArea = this.organizacao.MarketArea;
+      this.organizacaoSend.MarketAreaDtosID = this.organizacao.MarketArea.id;
+      this.organizacaoSend.TchnologicalArea = this.organizacao.TchnologicalArea;
+      this.organizacaoSend.TechnologicalAreaDtosId = this.organizacao.TchnologicalArea.id;
+      this.organizacaoSend.OperatingUnit = this.organizacao.OperatingUnit;
+      this.organizacaoSend.OperatingUnitsDtosId = this.organizacao.OperatingUnit.id;
+      this.organizacaoSend.IsDeleted = false;
+      console.log(this.organizacaoSend);
+
+      this.organizacaoService[this.estadoSalvar](this.organizacaoSend).subscribe(
         () => this.toastr.success('Estrutura Organizacional salva com Sucesso!', 'Sucesso'),
         (error: any) => {
           console.log(error);

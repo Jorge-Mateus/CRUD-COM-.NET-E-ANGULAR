@@ -11,6 +11,8 @@ namespace EstruturaOrganizacional.Domain
         public virtual string descricao { get; set; }
         public virtual bool IsDeleted { get; set; }
 
+        public List<OrganizationalStructure> Organizacao  { get; set; }
+
        
     }
 }

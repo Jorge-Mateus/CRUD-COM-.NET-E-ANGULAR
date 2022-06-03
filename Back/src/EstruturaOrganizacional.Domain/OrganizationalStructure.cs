@@ -21,6 +21,16 @@ namespace EstruturaOrganizacional.Domain
         public virtual TechnologicalArea TchnologicalAreas { get; set; }
 
         public virtual OperatingUnit OperatingUnits { get; set; }
+
+        public int BusinessAreaId { get; set; }
+        
+        public int MarketAreaID { get; set; }
+        
+        public int TechnologicalAreaId { get; set; }
+       
+        public int OperatingUnitsId { get; set; }
+       
+    
     }   
 
 }

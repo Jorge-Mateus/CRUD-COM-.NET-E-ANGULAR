@@ -30,18 +30,29 @@ namespace EstruturaOrganizacional.Application
         {
             try
             {
-                var organization = _mapper.Map<OrganizationalStructure>(model);
-                
-                organization.IsDeleted = false;
+                OrganizationalStructure obj = new OrganizationalStructure();
 
-                _geralPersist.Add<OrganizationalStructure>(organization);
+                obj.BusinessAreaId = model.BusinessAreaDtosId;
+                obj.MarketAreaID = model.MarketAreaDtosID;
+                obj.TechnologicalAreaId = model.TechnologicalAreaDtosId;
+                obj.OperatingUnitsId = model.OperatingUnitsDtosId;
+                obj.ano = model.ano;
+                obj.IsDeleted = model.IsDeleted;
+
+                //var organization = _mapper.Map<OrganizationalStructure>(model);
+                
+                //organization.IsDeleted = false;
+
+                _geralPersist.Add<OrganizationalStructure>(obj);
 
 
                 if(await _geralPersist.SaveChangesAsyncs())
                 {
-                    var retorno = await _organizationalStructurePersit.GetAllOrganizationalStructureByIdAsync(organization.id, false);
+                   // var retorno = await _organizationalStructurePersit.GetAllOrganizationalStructureByIdAsync(organization.id, false);
                   
-                    return _mapper.Map<OrganizationalStructureDtos>(retorno);
+                   // return _mapper.Map<OrganizationalStructureDtos>(retorno);
+                   return model;
+                    
                 }
 
                 return null;

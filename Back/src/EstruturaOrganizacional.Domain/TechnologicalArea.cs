@@ -12,6 +12,10 @@ namespace EstruturaOrganizacional.Domain
         public virtual string unidadeVirtual { get; set; } 
         public virtual bool IsDeleted { get; set; }
 
+
+        public List<OrganizationalStructure> Organizacao  { get; set; }
+
+    
         
     }
 }

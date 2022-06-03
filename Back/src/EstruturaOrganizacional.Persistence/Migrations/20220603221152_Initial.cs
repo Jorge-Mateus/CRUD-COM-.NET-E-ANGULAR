@@ -75,59 +75,59 @@ namespace EstruturaOrganizacional.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     ano = table.Column<int>(type: "int", nullable: false),
-                    BusinessAreasid = table.Column<int>(type: "int", nullable: true),
-                    MarketAreasid = table.Column<int>(type: "int", nullable: true),
-                    TchnologicalAreasid = table.Column<int>(type: "int", nullable: true),
-                    OperatingUnitsid = table.Column<int>(type: "int", nullable: true)
+                    BusinessAreaId = table.Column<int>(type: "int", nullable: false),
+                    MarketAreaID = table.Column<int>(type: "int", nullable: false),
+                    TechnologicalAreaId = table.Column<int>(type: "int", nullable: false),
+                    OperatingUnitsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ORGANIZATIONALSTRUCTURE", x => x.id);
                     table.ForeignKey(
-                        name: "FK_ORGANIZATIONALSTRUCTURE_BUSINESSAREA_BusinessAreasid",
-                        column: x => x.BusinessAreasid,
+                        name: "FK_ORGANIZATIONALSTRUCTURE_BUSINESSAREA_BusinessAreaId",
+                        column: x => x.BusinessAreaId,
                         principalTable: "BUSINESSAREA",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ORGANIZATIONALSTRUCTURE_MARKETAREA_MarketAreasid",
-                        column: x => x.MarketAreasid,
+                        name: "FK_ORGANIZATIONALSTRUCTURE_MARKETAREA_MarketAreaID",
+                        column: x => x.MarketAreaID,
                         principalTable: "MARKETAREA",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ORGANIZATIONALSTRUCTURE_OPERATINGUNIT_OperatingUnitsid",
-                        column: x => x.OperatingUnitsid,
+                        name: "FK_ORGANIZATIONALSTRUCTURE_OPERATINGUNIT_OperatingUnitsId",
+                        column: x => x.OperatingUnitsId,
                         principalTable: "OPERATINGUNIT",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ORGANIZATIONALSTRUCTURE_TECHNOLOGICALAREA_TchnologicalAreasid",
-                        column: x => x.TchnologicalAreasid,
+                        name: "FK_ORGANIZATIONALSTRUCTURE_TECHNOLOGICALAREA_TechnologicalAreaId",
+                        column: x => x.TechnologicalAreaId,
                         principalTable: "TECHNOLOGICALAREA",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ORGANIZATIONALSTRUCTURE_BusinessAreasid",
+                name: "IX_ORGANIZATIONALSTRUCTURE_BusinessAreaId",
                 table: "ORGANIZATIONALSTRUCTURE",
-                column: "BusinessAreasid");
+                column: "BusinessAreaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ORGANIZATIONALSTRUCTURE_MarketAreasid",
+                name: "IX_ORGANIZATIONALSTRUCTURE_MarketAreaID",
                 table: "ORGANIZATIONALSTRUCTURE",
-                column: "MarketAreasid");
+                column: "MarketAreaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ORGANIZATIONALSTRUCTURE_OperatingUnitsid",
+                name: "IX_ORGANIZATIONALSTRUCTURE_OperatingUnitsId",
                 table: "ORGANIZATIONALSTRUCTURE",
-                column: "OperatingUnitsid");
+                column: "OperatingUnitsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ORGANIZATIONALSTRUCTURE_TchnologicalAreasid",
+                name: "IX_ORGANIZATIONALSTRUCTURE_TechnologicalAreaId",
                 table: "ORGANIZATIONALSTRUCTURE",
-                column: "TchnologicalAreasid");
+                column: "TechnologicalAreaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
