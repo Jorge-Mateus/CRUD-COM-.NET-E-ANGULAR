@@ -79,12 +79,11 @@ namespace EstruturaOrganizacional.API.Controllers
         [HttpPost]
         public  async Task<IActionResult> Post(OrganizationalStructureDtos model)
         {
-            
             try
             {
-              var organizacao = await _organizationalStructure.AddOrganization(model);
+                var organizacao = await _organizationalStructure.AddOrganization(model);
                 
-               if(organizacao == null) return NoContent(); 
+                if(organizacao == null) return NoContent(); 
 
                 return Ok(organizacao);
                 

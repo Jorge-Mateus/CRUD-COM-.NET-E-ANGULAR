@@ -1,6 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { BusinessArea } from '@app/model/BusinessArea';
+import { MarketArea } from '@app/model/MarketArea';
+import { OperatingUnit } from '@app/model/OperatingUnit';
 import { OrganationalStructure } from '@app/model/OrganationalStructure';
+import { TchnologicalArea } from '@app/model/TchnologicalArea';
+import { BunissesAreaService } from '@app/services/bunissesArea.service';
 import { OrganizationStructureService } from '@app/services/OrganizationStructure.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -19,6 +24,10 @@ export class OrganationalstructureaListaComponent implements OnInit {
   private organizacaoListado = '';
   public organizacaoId = 0;
   public organizacaoIsDeleted = false;
+  mercado: MarketArea;
+  tecnologia: TchnologicalArea;
+  business: BusinessArea;
+  operating: OperatingUnit;
 
   public get filtroLista() {
     return this.organizacaoListado;
@@ -42,6 +51,7 @@ export class OrganationalstructureaListaComponent implements OnInit {
     private modalService: BsModalService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
+    private businessService: BunissesAreaService,
     private router: Router
   ) { }
 
@@ -61,7 +71,7 @@ export class OrganationalstructureaListaComponent implements OnInit {
       (organizacaoAreasResp: OrganationalStructure[]) => {
         this.organizacao = organizacaoAreasResp;
         this.organizacaofiltrados = this.organizacao;
-        console.log("Qualquer");
+        console.log(this.organizacao);
       },
       error => console.log(error)
     );

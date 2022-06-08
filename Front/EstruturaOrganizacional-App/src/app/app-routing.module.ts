@@ -31,6 +31,7 @@ const routes: Routes = [
   ]
   },
   { path: 'user/perfil', component: PerfilComponent},
+  
   { path: 'unidadedenegocio', redirectTo: 'unidadedenegocio/lista' },
   {
     path: 'unidadedenegocio', component: BusinessAreaComponent,

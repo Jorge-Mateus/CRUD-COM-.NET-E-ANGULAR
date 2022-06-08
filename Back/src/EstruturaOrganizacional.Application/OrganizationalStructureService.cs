@@ -160,6 +160,7 @@ namespace EstruturaOrganizacional.Application
             try
             {
                 var organization = await _organizationalStructurePersit.GetAllOrganizationalStructureByIdAsync(id, includeEstrutura);
+                
                 if( organization == null)return null;
               
                 else

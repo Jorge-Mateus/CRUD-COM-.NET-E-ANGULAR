@@ -17,7 +17,8 @@ namespace EstruturaOrganizacional.Application.Dtos
         public virtual string codEMS { get; set; }
 
         public virtual bool IsDeleted { get; set; }
-
+        
+        //public List<OrganizationalStructureDtos> Organizacao  { get; set; }
 
     }
 }

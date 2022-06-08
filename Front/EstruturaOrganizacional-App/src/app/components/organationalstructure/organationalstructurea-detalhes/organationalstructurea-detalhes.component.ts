@@ -129,16 +129,21 @@ export class OrganationalstructureaDetalhesComponent implements OnInit {
                    : {id: this.organizacao.id, ...this.form.value};
       console.log(this.organizacao);
       this.organizacaoSend.id = 0;
-      this.organizacaoSend.BusinessArea = this.organizacao.BusinessArea;
-      this.organizacaoSend.BusinessAreaDtosId = this.organizacao.BusinessArea.id;
-      this.organizacaoSend.MarketArea = this.organizacao.MarketArea;
-      this.organizacaoSend.MarketAreaDtosID = this.organizacao.MarketArea.id;
-      this.organizacaoSend.TchnologicalArea = this.organizacao.TchnologicalArea;
-      this.organizacaoSend.TechnologicalAreaDtosId = this.organizacao.TchnologicalArea.id;
-      this.organizacaoSend.OperatingUnit = this.organizacao.OperatingUnit;
-      this.organizacaoSend.OperatingUnitsDtosId = this.organizacao.OperatingUnit.id;
       this.organizacaoSend.IsDeleted = false;
+
+      this.organizacaoSend.ano = this.organizacao.ano;
+      this.organizacaoSend.BusinessArea = this.organizacao.BusinessArea;
+      this.organizacaoSend.MarketArea = this.organizacao.MarketArea;
+      this.organizacaoSend.OperatingUnit = this.organizacao.OperatingUnit;
+      this.organizacaoSend.TchnologicalArea = this.organizacao.TchnologicalArea;
+
+      this.organizacaoSend.BusinessAreaDtosId = this.organizacao.BusinessArea.id;
+      this.organizacaoSend.MarketAreaDtosID = this.organizacao.MarketArea.id;
+      this.organizacaoSend.OperatingUnitsDtosId = this.organizacao.OperatingUnit.id;
+      this.organizacaoSend.TechnologicalAreaDtosId = this.organizacao.TchnologicalArea.id;
+
       console.log(this.organizacaoSend);
+
 
       this.organizacaoService[this.estadoSalvar](this.organizacaoSend).subscribe(
         () => this.toastr.success('Estrutura Organizacional salva com Sucesso!', 'Sucesso'),

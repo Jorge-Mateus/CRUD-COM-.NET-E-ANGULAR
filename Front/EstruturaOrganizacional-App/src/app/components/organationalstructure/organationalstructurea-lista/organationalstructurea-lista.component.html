@@ -7,7 +7,7 @@
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
       </svg>
     </span>
-    <input [(ngModel)]="filtroLista" type="text" class="form-control" placeholder="Pesquise area de negocio" aria-label="Username" aria-describedby="addon-wrapping" >
+    <input [(ngModel)]="filtroLista" type="text" class="form-control" placeholder="Pesquise organizacao" aria-label="Username" aria-describedby="addon-wrapping" >
     <a class="d-flex btn btn-outline-primary" routerLink="/organizacaoestrutural/detalhes">
       <i class="fa fa-plus-circle my-1"></i>
       <b class="ml-1 d-none d-sm-block">Novo</b>
@@ -17,6 +17,7 @@
     <thead class=" thead-dark">
       <tr>
         <th style="text-align: center; vertical-align:middle !important">#</th>
+        <th style="text-align: center; vertical-align:middle !important">Ano</th>
         <th style="text-align: center; vertical-align:middle !important">businessarea</th>
         <th style="text-align: center; vertical-align:middle !important">MarketArea</th>
         <th style="text-align: center; vertical-align:middle !important">TchnologicalArea</th>
@@ -25,12 +26,13 @@
       </tr>
     </thead>
     <tbody *ngIf="organizacao && organizacao.length">
-      <tr *ngFor="let organizacao of organizacaofiltrados" (click) = "detalheNegocio(businessarea.id)" style="cursor: pointer;">
+      <tr *ngFor="let organizacao of organizacaofiltrados" (click) = "detalheNegocio(organizacao.id)" style="cursor: pointer;">
         <td style="text-align: center; vertical-align:middle !important">{{organizacao.id}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{organizacao.businessarea}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{organizacao.MarketArea}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{organizacao.TchnologicalArea}}</td>
-        <td style="text-align: center; vertical-align:middle !important">{{organizacao.OperatingUnit}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{organizacao.ano}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{organizacao}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{organizacao}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{organizacao}}</td>
+        <td style="text-align: center; vertical-align:middle !important">{{organizacao}}</td>
         <td style="text-align: center; vertical-align:middle !important">
           <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, organizacao.id)">
             <i class="fa fa-trash"></i>
@@ -49,11 +51,11 @@
 
 </div>
 
-<! --{{Unidade de negocio - JSON}}  -->
+<!--{{Unidade de negocio - JSON}}  -->
 
 <ng-template #template>
   <div class="modal-body text-center">
-    <p>Tem certeza que deseja deletar este negocio?</p>
+    <p>Tem certeza que deseja deletar esta organização?</p>
     <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
   </div>

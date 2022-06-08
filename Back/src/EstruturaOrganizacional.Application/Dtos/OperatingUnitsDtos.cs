@@ -12,5 +12,8 @@ namespace EstruturaOrganizacional.Application.Dtos
        public virtual string descricao { get; set; }
        public virtual string codReduzido { get; set; }
        public virtual bool IsDeleted { get; set; }
+
+    //    public List<OrganizationalStructureDtos> Organizacao  { get; set; }
+
     }
 }
